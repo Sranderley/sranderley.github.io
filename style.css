@@ -6,7 +6,7 @@ a, a:hover, a:active, a:visited, a:focus{
 body{
 	margin: 0;
 	font-family: Helvetica, Arial, sans-serif;
-	background-color: #BABEDA;
+	background-color: #E1E3E8;
 }
 
 .max{
@@ -109,6 +109,10 @@ body{
 	height: 93vh;
 	overflow-y: auto;
 	overflow-x: hidden;
+}
+
+.content-position{
+	margin-top: 2vh;
 }
 
 .content-position.navCollapsed{
