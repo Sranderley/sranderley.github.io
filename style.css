@@ -23,7 +23,7 @@ body{
 
 .title{
 	line-height: 5vh;
-	font-size: 10em;
+	font-size: 2em;
 	color: white;
-	font-weight: bold;
+	margin-left: 2vw;
 }
