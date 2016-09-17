@@ -4,15 +4,12 @@
 <div class="not-banner">
 	<!-- Here goes the menu directive -->
 	<button ng-click="nav.toggle()">Test</button>
-	<rc-expandable-element
-		api="nav"
-		class="nav"
+	<rc-expandable-element api="nav">
+	<div class="nav"
 		ng-class="{
-			collapsed: true,
-			collapsed: scope.state === 'collapsed',
-			expanded: scope.state === 'expanded'
-		}"
-	>
+		collapsed: true
+	}">
 
+	</div>
 	</rc-expandable-element>
 </div>
