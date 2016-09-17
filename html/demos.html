@@ -34,12 +34,12 @@
 							expanded: rc.state === 'expanded'
 						}"
 					>
-						<a href>
+						<a href="#/demos/rcButton">
 							<div class="nav-list-item">
 								<label class="nav-item-text">rcButton</label>
 							</div>
 						</a>
-						<a href>
+						<a href="#/demos/rcExpandableElement">
 							<div class="nav-list-item">
 								<lavel class="nav-item-text">rcExpandableElement</label>
 							</div>
@@ -60,5 +60,12 @@
 </rc-expandable-element>
 
 <div class="page-content">
-	<div class="ui-view"></div>
+	<div class="content-position"
+		ng-class="{
+			navCollapsed: nav.state === 'collapsed',
+			navExpanded: nav.state === 'expanded'
+		}"
+	>
+		<div class="ui-view"></div>
+	</div>
 </div>

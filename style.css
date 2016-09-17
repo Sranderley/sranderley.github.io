@@ -110,3 +110,11 @@ body{
 	overflow-y: auto;
 	overflow-x: hidden;
 }
+
+.content-position.navCollapsed{
+	margin-left: 10vw;
+}
+
+.content-position.navExpanded{
+	margin-left: 30vw;
+}
