@@ -1,7 +1,6 @@
 a, a:hover, a:active, a:visited, a:focus{
     text-decoration:none;
     outline:0;
-    cursor: pointer;
 }
 
 body{
@@ -57,6 +56,13 @@ body{
 	width: 25vw;
 }
 
+.nav-title{
+	line-height: 5vh;
+	font-size: 1.2em;
+	color: white;
+	margin-left: 1vw;
+}
+
 .nav-menu-toggle{
 	font-size: 1.5em;
 	color: white;
@@ -66,9 +72,16 @@ body{
 	margin-right: 1vw;
 }
 
+.nav-list-item{
+	margin-left: 1vw;
+	height: 5vh;
+	width: 23vw;
+	color: white;
+}
+
 .nav-item-text{
+	pointer-events: none;
 	line-height: 5vh;
 	font-size: 1.2em;
-	color: white;
 	margin-left: 1vw;
 }
