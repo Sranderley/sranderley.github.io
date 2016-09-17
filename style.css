@@ -42,7 +42,7 @@ body{
 }
 
 .nav.collapsed{
-	width: 5vw;
+	width: 4vw;
 }
 
 .nav.expanded{
@@ -55,7 +55,7 @@ body{
 }
 
 .nav-menu-toggle{
-	font-size: 2em;
+	font-size: 2vw;
 	color: white;
 	display: block;
 	float: right;
