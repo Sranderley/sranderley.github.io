@@ -27,3 +27,19 @@ body{
 	color: white;
 	margin-left: 2vw;
 }
+
+.nav{
+	top: 5vh;
+	height: 85vh;
+    overflow: hidden;
+    transition: width 0.1s;
+    background-color: #0F1526;
+}
+
+.nav.collapsed{
+	width: 5vw;
+}
+
+.nav.expanded{
+	width: 15vw;
+}
