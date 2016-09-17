@@ -52,10 +52,11 @@ body{
 .nav-banner{
 	height: 5vh;
 	width: 100%;
-	float: right;
 }
 
 .nav-menu-toggle{
 	font-size: 2em;
 	color: white;
+	display: block;
+	float: right;
 }
