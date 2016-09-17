@@ -20,3 +20,10 @@ body{
 	width: 100vw;
 	background-color: #626878;
 }
+
+.title{
+	line-height: 5vh;
+	font-size: 10em;
+	color: white;
+	font-weight: bold;
+}
