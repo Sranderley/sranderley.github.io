@@ -1,5 +1,6 @@
 body{
 	margin: 0;
+	font-family: Helvetica, Arial, sans-serif;
 }
 
 .max{
@@ -10,12 +11,12 @@ body{
 .banner{
 	height: 5vh;
 	width: 100vw;
-	background-color: red;
+	background-color: #272A33;
 }
 
 .not-banner{
 	top: 5vh;
 	height: 95vh;
 	width: 100vw;
-	background-color: blue;
+	background-color: #626878;
 }
