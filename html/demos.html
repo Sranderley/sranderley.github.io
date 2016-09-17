@@ -10,6 +10,10 @@
 				expanded: nav.state === 'expanded'
 			}"
 		>
+			<a ng-click="nav.toggle()">
+				<i class="fa fa-bars"></i>
+			</a>
+
 			<button ng-click="nav.toggle()">Test</button>
 		</div>
 	</rc-expandable-element>
