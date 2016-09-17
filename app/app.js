@@ -1,4 +1,5 @@
 console.log('test');
+console.log(angular);
 angular.module('demos', []);
 console.log('test agina');
 
