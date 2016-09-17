@@ -1,0 +1,17 @@
+.max{
+	height: 100vh;
+	width: 100vw;
+}
+
+.banner{
+	height: 5vh;
+	width: 100vw;
+	color: red;
+}
+
+.not-banner{
+	top: 5vh;
+	height: 95vh;
+	width: 100vw;
+	color: blue;
+}

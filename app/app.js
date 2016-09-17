@@ -17,8 +17,9 @@ function config($stateProvider, $urlRouterProvider){
 }
 
 angular.module('demos')
-	.controller('test', test);
+	.controller('DemoController', DemoController);
 
-function test(){
-	console.log('controller working');
+function DemoController(){
+	var dc = this;
+
 }
