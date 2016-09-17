@@ -6,12 +6,12 @@
 .banner{
 	height: 5vh;
 	width: 100vw;
-	color: red;
+	background-color: red;
 }
 
 .not-banner{
 	top: 5vh;
 	height: 95vh;
 	width: 100vw;
-	color: blue;
+	background-color: blue;
 }
