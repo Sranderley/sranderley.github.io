@@ -1,6 +1,7 @@
 a, a:hover, a:active, a:visited, a:focus{
     text-decoration:none;
     outline:0;
+    cursor: pointer;
 }
 
 body{
@@ -14,31 +15,32 @@ body{
 }
 
 .banner{
-	height: 5vh;
+	height: 7vh;
 	width: 100vw;
-	background-color: #272A33;
+	background-color: #202863;
 }
 
 .not-banner{
-	top: 5vh;
-	height: 95vh;
+	top: 7vh;
+	height: 93vh;
 	width: 100vw;
-	background-color: #626878;
+	background-color: #BABEDA;
 }
 
 .title{
-	line-height: 5vh;
-	font-size: 2em;
+	line-height: 7vh;
+	font-size: 1.5em;
+	font-weight: lighter;
 	color: white;
 	margin-left: 2vw;
 }
 
 .nav{
-	top: 5vh;
-	height: 95vh;
+	top: 7vh;
+	height: 93vh;
     overflow: hidden;
     transition: width 0.1s;
-    background-color: #0F1526;
+    background-color: #656B94;
 }
 
 .nav.collapsed{
@@ -55,7 +57,7 @@ body{
 }
 
 .nav-menu-toggle{
-	font-size: 2vw;
+	font-size: 1.5em;
 	color: white;
 	display: block;
 	float: right;

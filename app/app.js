@@ -11,7 +11,7 @@ function config($stateProvider, $urlRouterProvider){
 
 	.state('home', {
 		url: '/demos',
-		templateUrl: '../html/demos.html'
+		templateUrl: 'html/demos.html'
 	});
 
 }
