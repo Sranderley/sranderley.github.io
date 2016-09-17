@@ -6,24 +6,19 @@ a, a:hover, a:active, a:visited, a:focus{
 body{
 	margin: 0;
 	font-family: Helvetica, Arial, sans-serif;
+	background-color: #BABEDA;
 }
 
 .max{
-	height: 100vh;
-	width: 100vw;
+	margin: 0;
+	overflow: hidden;
 }
 
 .banner{
+	position: fixed;
 	height: 7vh;
 	width: 100vw;
 	background-color: #202863;
-}
-
-.not-banner{
-	top: 7vh;
-	height: 93vh;
-	width: 100vw;
-	background-color: #BABEDA;
 }
 
 .title{
@@ -35,9 +30,9 @@ body{
 }
 
 .nav{
+	position: fixed;
 	top: 7vh;
 	height: 93vh;
-    position: absolute;
     transition: left 0.1s;
     background-color: #445B9F;
     width: 25vw;
@@ -105,3 +100,13 @@ body{
 	height: 0;
 }
 
+.hidden-list.expanded{
+	height: auto;
+}
+
+.page-content{
+	margin-top: 7vh;
+	height: 93vh;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
