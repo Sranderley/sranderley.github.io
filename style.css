@@ -51,6 +51,15 @@ body{
 	left: 0vw;
 }
 
+.nav-header{
+	height: 5vh;
+}
+
+.nav-content{
+	overflow-y: auto;
+	height: 88vh;
+}
+
 .nav-item{
 	height: 5vh;
 	width: 25vw;
@@ -64,7 +73,7 @@ body{
 }
 
 .nav-menu-toggle{
-	font-size: 1.5em;
+	font-size: 1.2em;
 	color: white;
 	display: block;
 	float: right;
