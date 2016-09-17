@@ -38,22 +38,23 @@ body{
 .nav{
 	top: 7vh;
 	height: 93vh;
-    overflow: hidden;
-    transition: width 0.1s;
-    background-color: #656B94;
+    position: absolute;
+    transition: left 0.1s;
+    background-color: #445B9F;
+    width: 25vw;
 }
 
 .nav.collapsed{
-	width: 4vw;
+	left: -21vw;
 }
 
 .nav.expanded{
-	width: 25vw;
+	left: 0vw;
 }
 
-.nav-banner{
+.nav-item{
 	height: 5vh;
-	width: 100%;
+	width: 25vw;
 }
 
 .nav-menu-toggle{
@@ -61,5 +62,13 @@ body{
 	color: white;
 	display: block;
 	float: right;
+	margin-top: 1vh;
 	margin-right: 1vw;
+}
+
+.nav-item-text{
+	line-height: 5vh;
+	font-size: 1.2em;
+	color: white;
+	margin-left: 1vw;
 }
