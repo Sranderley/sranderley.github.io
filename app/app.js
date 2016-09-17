@@ -15,11 +15,3 @@ function config($stateProvider, $urlRouterProvider){
 	});
 
 }
-
-angular.module('demos')
-	.controller('DemoController', DemoController);
-
-function DemoController(){
-	var dc = this;
-
-}
