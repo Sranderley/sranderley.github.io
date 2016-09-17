@@ -12,13 +12,14 @@ function rcExpandableElement(){
 			api: '='
 		},
 		link: function(scope, elem, attr){
-			scope.state = 'collapsed';
+			var state = 'collapsed';
 			scope.api = {
+				state: state,
 				toggle: toggle
 			};
 
 			function toggle(){
-				scope.state = scope.state === "collapsed" ? "expanded" : "collapsed";
+				state = state === "collapsed" ? "expanded" : "collapsed";
 			}
 		}
 	}
