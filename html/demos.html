@@ -17,12 +17,31 @@
 				</a>
 			</div>
 			<div class="nav-item">
-				<a href>
+				<a href ng-click="rc.toggle()">
 					<div class="nav-list-item">
 						<label class="nav-item-text">reusableComponents</label>
 						<i class="fa fa-caret-down"></i>
 					</div>
 				</a>
+				<rc-expandable-element api="rc">
+					<div class="hidden-list"
+						ng-class="{
+							collapsed: rc.state === 'collapsed',
+							expanded: rc.state === 'expanded'
+						}"
+					>
+						<a href>
+							<div class="nav-list-item">
+								<label class="nav-item-text">rcButton</label>
+							</div>
+						</a>
+						<a href>
+							<div class="nav-list-item">
+								<lavel class="nav-item-text">rcExpandableElement</label>
+							</div>
+						</a>
+					</div>
+				</rc-expandable-element>
 			</div>
 		</div>
 	</rc-expandable-element>

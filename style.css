@@ -74,8 +74,8 @@ body{
 
 .nav-list-item{
 	margin-left: 1vw;
+	margin-right: 1vw;
 	height: 5vh;
-	width: 23vw;
 	color: white;
 }
 
@@ -85,3 +85,14 @@ body{
 	font-size: 1.2em;
 	margin-left: 1vw;
 }
+
+.hidden-list{
+	margin-left: 1vw;
+	transition: height 0.1s;
+	overflow: hidden;
+}
+
+.hidden-list.collapsed{
+	height: 0;
+}
+
