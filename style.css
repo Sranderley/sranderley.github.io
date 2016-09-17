@@ -30,7 +30,7 @@ body{
 
 .nav{
 	top: 5vh;
-	height: 85vh;
+	height: 90vh;
     overflow: hidden;
     transition: width 0.1s;
     background-color: #0F1526;
@@ -41,5 +41,5 @@ body{
 }
 
 .nav.expanded{
-	width: 15vw;
+	width: 25vw;
 }
