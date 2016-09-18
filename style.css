@@ -58,9 +58,12 @@ body{
 
 .nav-item{
 	width: 25vw;
-	border-bottom: 1px solid #6579B7;
 	transition: height 0.1s;
 	overflow: hidden;
+}
+
+.nav-item > *:hover{
+	background-color: #6579B7;
 }
 
 .nav-item.collapsed{
@@ -88,10 +91,11 @@ body{
 }
 
 .nav-list-item{
-	margin-left: 1vw;
-	margin-right: 1vw;
+	padding-left: 1vw;
+	padding-right: 1vw;
 	height: 5vh;
 	color: white;
+	background-color: inherit;
 }
 
 .nav-list-item.child{
