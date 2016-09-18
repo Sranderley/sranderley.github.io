@@ -36,6 +36,7 @@ body{
     transition: left 0.1s;
     background-color: #445B9F;
     width: 25vw;
+    box-shadow: 5px 2px 4px #888888;
 }
 
 .nav.collapsed{
@@ -130,4 +131,5 @@ body{
 	height: 50vh;
 	width: 100%;
 	margin-bottom: 5vh;
+	box-shadow: 5px 5px 4px #888888;
 }
