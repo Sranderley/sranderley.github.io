@@ -21,42 +21,42 @@
 			</div>
 		</div>
 		<div class="nav-content">
+
+			<rc-expandable-element api="rc">
+				<div class="nav-item"
+					ng-class="{
+						collapsed: rc.state === 'collapsed',
+						expanded: rc.state === 'expanded'
+					}"
+				>
+					<a href ng-click="rc.toggle()">
+						<div class="nav-list-item">
+							<label class="nav-item-text">reusableComponents</label>
+							<i class="fa fa-caret-down"></i>
+						</div>
+					</a>
+					<a href="#/demos/rcButton">
+						<div class="nav-list-item child">
+							<label class="nav-item-text">rcButton</label>
+						</div>
+					</a>
+					<a href="#/demos/rcExpandableElement">
+						<div class="nav-list-item child">
+							<lavel class="nav-item-text">rcExpandableElement</label>
+						</div>
+					</a>
+				</div>
+			</rc-expandable-element>
+
 			<div class="nav-item">
-
-				<a href ng-click="rc.toggle()">
-					<div class="nav-list-item">
-						<label class="nav-item-text">reusableComponents</label>
-						<i class="fa fa-caret-down"></i>
-					</div>
-				</a>
-				<rc-expandable-element api="rc">
-					<div class="hidden-list"
-						ng-class="{
-							collapsed: rc.state === 'collapsed',
-							expanded: rc.state === 'expanded'
-						}"
-					>
-						<a href="#/demos/rcButton">
-							<div class="nav-list-item">
-								<label class="nav-item-text">rcButton</label>
-							</div>
-						</a>
-						<a href="#/demos/rcExpandableElement">
-							<div class="nav-list-item">
-								<lavel class="nav-item-text">rcExpandableElement</label>
-							</div>
-						</a>
-					</div>
-				</rc-expandable-element>
-
 				<a href ng-click="d3.toggle()">
 					<div class="nav-list-item">
 						<label class="nav-item-text">d3 modules</label>
 						<i class="fa fa-caret-down"></i>
 					</div>
 				</a>
-
 			</div>
+
 		</div>
 	</div>
 </rc-expandable-element>

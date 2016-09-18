@@ -56,8 +56,18 @@ body{
 }
 
 .nav-item{
-	height: 5vh;
 	width: 25vw;
+	border-bottom: 1px solid #6579B7;
+	transition: height 0.1s;
+	overflow: hidden;
+}
+
+.nav-item.collapsed{
+	height: 5vh;
+}
+
+.nav-item.expanded{
+	height: auto;
 }
 
 .nav-title{
@@ -83,25 +93,15 @@ body{
 	color: white;
 }
 
+.nav-list-item.child{
+	margin-left: 3vw;
+}
+
 .nav-item-text{
 	pointer-events: none;
 	line-height: 5vh;
 	font-size: 1.1em;
 	margin-left: 1vw;
-}
-
-.hidden-list{
-	margin-left: 1vw;
-	transition: height 0.1s;
-	overflow: hidden;
-}
-
-.hidden-list.collapsed{
-	height: 0;
-}
-
-.hidden-list.expanded{
-	height: auto;
 }
 
 .page-content{
@@ -112,13 +112,22 @@ body{
 }
 
 .content-position{
-	margin-top: 2vh;
+	margin-top: 3vh;
+	margin-right: 8vw;
+	transition: margin-left 0.1s;
 }
 
 .content-position.navCollapsed{
-	margin-left: 10vw;
+	margin-left: 12vw;
 }
 
 .content-position.navExpanded{
-	margin-left: 30vw;
+	margin-left: 33vw;
+}
+
+.rc-button{
+	background-color: white;
+	height: 50vh;
+	width: 100%;
+	margin-bottom: 5vh;
 }
