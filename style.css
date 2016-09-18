@@ -62,6 +62,10 @@ body{
 	overflow: hidden;
 }
 
+.nav-item > a {
+	display: block;
+}
+
 .nav-item > *:hover{
 	background-color: #6579B7;
 }
@@ -74,6 +78,13 @@ body{
 	height: auto;
 }
 
+.nav-title-container{
+	display: block;
+	float: left;
+	height: 5vh;
+	width: 21vw;
+}
+
 .nav-title{
 	line-height: 5vh;
 	font-size: 1.2em;
@@ -82,12 +93,14 @@ body{
 }
 
 .nav-menu-toggle{
+	display: block;
+	float: left;
+	height: 5vh;
+	width: 4vw;
+	line-height: 5vh;
 	font-size: 1.2em;
 	color: white;
-	display: block;
-	float: right;
-	margin-top: 1vh;
-	margin-right: 1vw;
+	text-align: center;
 }
 
 .nav-list-item{
@@ -95,11 +108,10 @@ body{
 	padding-right: 1vw;
 	height: 5vh;
 	color: white;
-	background-color: inherit;
 }
 
-.nav-list-item.child{
-	margin-left: 3vw;
+.child{
+	margin-left: 2vw;
 }
 
 .nav-item-text{
