@@ -149,3 +149,8 @@ body{
 	margin-bottom: 5vh;
 	box-shadow: 5px 5px 4px #888888;
 }
+
+.code-box{
+	height: 60vh;
+	overflow-y: scroll;
+}
