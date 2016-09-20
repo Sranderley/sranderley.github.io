@@ -2,75 +2,70 @@
 	<div class="title">Sranderley</div>
 </div>
 
-<!-- This is the directive which wraps around the sidenav -->
-<rc-expandable-element api="nav">
-	<div class="nav"
-		ng-class="{
-			collapsed: nav.state === 'collapsed',
-			expanded: nav.state === 'expanded'
-		}"
-	>
-		<div class="nav-header">
-			<div class="nav-item">
-				<a href="#/demos/" class="nav-title-container">
-					<label class="nav-title">Demos</label>
-				</a>
-				<a href ng-click="nav.toggle()" class="nav-menu-toggle">
-					<i class="fa fa-bars menu-icon"></i>
-				</a>
-			</div>
-		</div>
-		<div class="nav-content">
-
-			<rc-expandable-element api="rc">
-				<div class="nav-item"
-					ng-class="{
-						collapsed: rc.state === 'collapsed',
-						expanded: rc.state === 'expanded'
-					}"
-				>
-					<a href ng-click="rc.toggle()">
-						<div class="nav-list-item">
-							<label class="nav-item-text">reusableComponents</label>
-							<i class="fa fa-caret-down"></i>
-						</div>
-					</a>
-					<a href="#/demos/rcButton" class="child">
-						<div class="nav-list-item">
-							<label class="nav-item-text">rcButton</label>
-						</div>
-					</a>
-					<a href="#/demos/rcExpandableElement" class="child">
-						<div class="nav-list-item">
-							<label class="nav-item-text">rcExpandableElement</label>
-						</div>
-					</a>
-				</div>
-			</rc-expandable-element>
-
-			<rc-expandable-element api="d3">
-				<div class="nav-item"
-					ng-class="{
-						collapsed: d3.state === 'collapsed',
-						expanded: d3.state === 'expanded'
-					}"
-				>
-					<a href ng-click="d3.toggle()">
-						<div class="nav-list-item">
-							<label class="nav-item-text">d3 modules</label>
-							<i class="fa fa-caret-down"></i>
-						</div>
-					</a>
-					<a href class="child">
-						<div class="nav-list-item">
-							<label class="nav-item-text">Swapping Nodes</label>
-						</div>
-					</a>
-				</div>
-			</rc-expandable-element>
+<div rb-expand
+	expand-api="nav"
+	class="nav"
+	ng-class="{
+		collapsed: nav.state === 'collapsed',
+		expanded: nav.state === 'expanded'
+	}"
+>
+	<div class="nav-header">
+		<div class="nav-item">
+			<a href="#/demos/" class="nav-title-container">
+				<label class="nav-title">Demos</label>
+			</a>
+			<a href ng-click="nav.toggle()" class="nav-menu-toggle">
+				<i class="fa fa-bars menu-icon"></i>
+			</a>
 		</div>
 	</div>
-</rc-expandable-element>
+
+	<div class="nav-content">
+
+		<div rb-expand
+			expand-api="rc"
+			class="nav-item"
+			ng-class="{
+				collapsed: rc.state === 'collapsed',
+				expanded: rc.state === 'expanded'
+			}"
+		>
+			<a href ng-click="rc.toggle()">
+				<div class="nav-list-item">
+					<label class="nav-item-text">reusableBehaviors</label>
+					<i class="fa fa-caret-down"></i>
+				</div>
+			</a>
+			<a href="#/demos/rbExpand" class="child">
+				<div class="nav-list-item">
+					<label class="nav-item-text">rbExpand</label>
+				</div>
+			</a>
+		</div>
+
+		<div rb-expand
+			expand-api="d3"
+			class="nav-item"
+			ng-class="{
+				collapsed: d3.state === 'collapsed',
+				expanded: d3.state === 'expanded'
+			}"
+		>
+			<a href ng-click="d3.toggle()">
+				<div class="nav-list-item">
+					<label class="nav-item-text">d3 modules</label>
+					<i class="fa fa-caret-down"></i>
+				</div>
+			</a>
+			<a href class="child">
+				<div class="nav-list-item">
+					<label class="nav-item-text">Swapping Nodes</label>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
 
 <div class="page-content">
 	<div class="content-position"

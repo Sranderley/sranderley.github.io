@@ -1,8 +1,18 @@
+<button ng-click="js.toggle()">JS</button>
+<button ng-click="html.toggle()">HTML</button>
+<button ng-click="css.toggle()">CSS</button>
 
-	<div class="code-box">
-		<prism>
-			<pre class="language-javascript">
-				<code class="language-javascript">
+
+	<rc-expandable-list api="js" list="1" start-open="true">
+		<div class="code-box"
+			ng-class="{
+				collapsed: js.getState() === 'collapsed',
+				expanded: js.getState() === 'expanded'
+			}"
+		>
+			<prism>
+				<pre class="language-javascript">
+					<code class="language-javascript">
 angular
 	.module('bonsai')
 	.controller('FakeController', FakeController);
@@ -39,14 +49,23 @@ FakeController.$inject = ['$scope'];
 function FakeController(){
 	var fc = this;
 }
-				</code>
-			</pre>
-		</prism>
-	</div>
-	<div class="code-box">
-		<prism>
-			<pre class="language-markup">
-				<code class="language-markup">
+					</code>
+				</pre>
+			</prism>
+		</div>
+	</rc-expandable-list>
+
+
+	<rc-expandable-list api="html" list="1">
+		<div class="code-box"
+			ng-class="{
+				collapsed: html.getState() === 'collapsed',
+				expanded: html.getState() === 'expanded'
+			}"
+		>
+			<prism>
+				<pre class="language-markup">
+					<code class="language-markup">
 &lt;p&gt; this is just a test &lt;/p&gt;
 &lt;p&gt; this is just a test &lt;/p&gt;
 &lt;p&gt; this is just a test &lt;/p&gt;
@@ -61,14 +80,22 @@ function FakeController(){
 &lt;p&gt; this is just a test &lt;/p&gt;
 &lt;p&gt; this is just a test &lt;/p&gt;
 &lt;p&gt; this is just a test &lt;/p&gt;
-				</code>
-			</pre>
-		</prism>
-	</div>
-	<div class="code-box">
-		<prism>
-			<pre class="language-css">
-				<code class="language-css">
+					</code>
+				</pre>
+			</prism>
+		</div>
+	</rc-expandable-list>
+
+	<rc-expandable-list api="css" list="1">
+		<div class="code-box"
+			ng-class="{
+				collapsed: css.getState() === 'collapsed',
+				expanded: css.getState() === 'expanded'
+			}"
+		>
+			<prism>
+				<pre class="language-css">
+					<code class="language-css">
 .test {
 	background-color: green;
 	width: 20vw;
@@ -99,7 +126,8 @@ function FakeController(){
 	width: 20vw;
 	height: 20vh;
 }
-				</code>
-			</pre>
-		</prism>
-	</div>
+					</code>
+				</pre>
+			</prism>
+		</div>
+	</rc-expandable-list>

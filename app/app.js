@@ -19,14 +19,9 @@ function config($stateProvider, $urlRouterProvider){
 		templateUrl: 'html/placeholder.html'
 	})
 
-	.state('demos.rcButton', {
-		url: '/rcButton',
-		templateUrl: 'html/rcButton.html'
-	})
-
-	.state('demos.rcExpandableElement', {
-		url: '/rcExpandableElement',
-		templateUrl: 'html/rcExpandableElement.html'
+	.state('demos.rbExpand', {
+		url: '/rbExpand',
+		templateUrl: 'html/rbExpand.html'
 	});
 
 }

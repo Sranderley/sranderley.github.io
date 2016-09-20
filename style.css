@@ -151,6 +151,30 @@ body{
 }
 
 .code-box{
+	float: left;
 	height: 60vh;
 	overflow-y: scroll;
+	transition: width 0.2s;
+}
+
+.code-box.collapsed{
+	width: 0;
+}
+
+.code-box.expanded{
+	width: 100%;
+}
+
+.test{
+	height: 50vw;
+	background-color: green;
+	transition: width 0.1s;
+}
+
+.test.collapsed{
+	width: 0;
+}
+
+.test.expanded{
+	width: 100%;
 }
