@@ -19,9 +19,19 @@ function config($stateProvider, $urlRouterProvider){
 		templateUrl: 'html/placeholder.html'
 	})
 
-	.state('demos.rbExpand', {
-		url: '/rbExpand',
-		templateUrl: 'html/rbExpand.html'
+	.state('demos.rbToggle', {
+		url: '/rbToggle',
+		templateUrl: 'html/rbToggle.html'
+	})
+
+	.state('demos.rbRelay', {
+		url: '/rbRelay',
+		templateUrl: 'html/rbRelay.html'
+	})
+
+	.state('demos.d3Swap', {
+		url: '/d3Swap',
+		templateUrl: 'html/d3SwappingNodes.html'
 	});
 
 }

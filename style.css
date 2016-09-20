@@ -165,16 +165,15 @@ body{
 	width: 100%;
 }
 
-.test{
-	height: 50vw;
-	background-color: green;
-	transition: width 0.1s;
+.code-viewer{
+	overflow: hidden;
+	transition: height 0.2s;
 }
 
-.test.collapsed{
-	width: 0;
+.code-viewer.collapsed{
+	height: 0;
 }
 
-.test.expanded{
-	width: 100%;
+.code-viewer.expanded{
+	height: 60vh;
 }

@@ -1,13 +1,25 @@
+<button ng-click="code.toggle()">Peek</button>
+
+	<div rb-toggle
+		toggle-api="code"
+		class="code-viewer"
+		ng-class="{
+			collapsed: !code.active,
+			expanded: code.active
+		}"
+	>
+
 <button ng-click="js.toggle()">JS</button>
 <button ng-click="html.toggle()">HTML</button>
 <button ng-click="css.toggle()">CSS</button>
-
-
-	<rc-expandable-list api="js" list="1" start-open="true">
-		<div class="code-box"
+		<div rb-relay
+			relay-api="js"
+			group="1"
+			first="true"
+			class="code-box"
 			ng-class="{
-				collapsed: js.getState() === 'collapsed',
-				expanded: js.getState() === 'expanded'
+				collapsed: !js.isActive(),
+				expanded: js.isActive()
 			}"
 		>
 			<prism>
@@ -53,14 +65,14 @@ function FakeController(){
 				</pre>
 			</prism>
 		</div>
-	</rc-expandable-list>
 
-
-	<rc-expandable-list api="html" list="1">
-		<div class="code-box"
+		<div rb-relay
+			relay-api="html"
+			group="1"
+			class="code-box"
 			ng-class="{
-				collapsed: html.getState() === 'collapsed',
-				expanded: html.getState() === 'expanded'
+				collapsed: !html.isActive(),
+				expanded: html.isActive()
 			}"
 		>
 			<prism>
@@ -84,13 +96,14 @@ function FakeController(){
 				</pre>
 			</prism>
 		</div>
-	</rc-expandable-list>
 
-	<rc-expandable-list api="css" list="1">
-		<div class="code-box"
+		<div rb-relay
+			relay-api="css"
+			group="1"
+			class="code-box"
 			ng-class="{
-				collapsed: css.getState() === 'collapsed',
-				expanded: css.getState() === 'expanded'
+				collapsed: !css.isActive(),
+				expanded: css.isActive()
 			}"
 		>
 			<prism>
@@ -130,4 +143,4 @@ function FakeController(){
 				</pre>
 			</prism>
 		</div>
-	</rc-expandable-list>
+</div>

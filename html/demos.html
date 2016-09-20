@@ -2,12 +2,12 @@
 	<div class="title">Sranderley</div>
 </div>
 
-<div rb-expand
-	expand-api="nav"
+<div rb-toggle
+	toggle-api="nav"
 	class="nav"
 	ng-class="{
-		collapsed: nav.state === 'collapsed',
-		expanded: nav.state === 'expanded'
+		collapsed: !nav.active,
+		expanded: nav.active
 	}"
 >
 	<div class="nav-header">
@@ -23,12 +23,12 @@
 
 	<div class="nav-content">
 
-		<div rb-expand
-			expand-api="rc"
+		<div rb-toggle
+			toggle-api="rc"
 			class="nav-item"
 			ng-class="{
-				collapsed: rc.state === 'collapsed',
-				expanded: rc.state === 'expanded'
+				collapsed: !rc.active,
+				expanded: rc.active
 			}"
 		>
 			<a href ng-click="rc.toggle()">
@@ -37,19 +37,28 @@
 					<i class="fa fa-caret-down"></i>
 				</div>
 			</a>
-			<a href="#/demos/rbExpand" class="child">
+			<a href="#/demos/rbToggle" class="child">
 				<div class="nav-list-item">
-					<label class="nav-item-text">rbExpand</label>
+					<label class="nav-item-text">
+						rbToggle
+					</label>
+				</div>
+			</a>
+			<a href="#/demos/rbRelay" class="child">
+				<div class="nav-list-item">
+					<label class="nav-item-text">
+						rbRelay
+					</label>
 				</div>
 			</a>
 		</div>
 
-		<div rb-expand
-			expand-api="d3"
+		<div rb-toggle
+			toggle-api="d3"
 			class="nav-item"
 			ng-class="{
-				collapsed: d3.state === 'collapsed',
-				expanded: d3.state === 'expanded'
+				collapsed: !d3.active,
+				expanded: d3.active
 			}"
 		>
 			<a href ng-click="d3.toggle()">
@@ -58,7 +67,7 @@
 					<i class="fa fa-caret-down"></i>
 				</div>
 			</a>
-			<a href class="child">
+			<a href="#/demos/d3Swap" class="child">
 				<div class="nav-list-item">
 					<label class="nav-item-text">Swapping Nodes</label>
 				</div>
@@ -70,8 +79,8 @@
 <div class="page-content">
 	<div class="content-position"
 		ng-class="{
-			navCollapsed: nav.state === 'collapsed',
-			navExpanded: nav.state === 'expanded'
+			navCollapsed: !nav.active,
+			navExpanded: nav.active
 		}"
 	>
 		<div class="ui-view"></div>
