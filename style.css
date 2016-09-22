@@ -18,7 +18,7 @@ body{
 	position: fixed;
 	height: 7vh;
 	width: 100vw;
-	background-color: #202863;
+	background-color: #0C2032;
 }
 
 .title{
@@ -34,7 +34,7 @@ body{
 	top: 7vh;
 	height: 93vh;
     transition: left 0.1s;
-    background-color: #445B9F;
+    background-color: #2C3E50;
     width: 25vw;
     box-shadow: 5px 2px 4px #888888;
 }
@@ -67,7 +67,7 @@ body{
 }
 
 .nav-item > *:hover{
-	background-color: #6579B7;
+	background-color: #42586E;
 }
 
 .nav-item.collapsed{
@@ -175,5 +175,16 @@ body{
 }
 
 .code-viewer.expanded{
-	height: 60vh;
+	height: 65vh;
+}
+
+.code-viewer-ribbon{
+	height: 5vh;
+	background-color: #202863;
+
+}
+
+.code-viewer-banner{
+	height: 7vh;
+	background-color: #445B9F;
 }

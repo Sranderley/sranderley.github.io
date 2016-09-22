@@ -1,5 +1,6 @@
-<button ng-click="code.toggle()">Peek</button>
-
+<div class="code-viewer-banner">
+	<button ng-click="code.toggle()">Peek</button>
+</div>
 	<div rb-toggle
 		toggle-api="code"
 		class="code-viewer"
@@ -8,10 +9,12 @@
 			expanded: code.active
 		}"
 	>
+		<div class="code-viewer-ribbon">
+			<button ng-click="js.toggle()">JS</button>
+			<button ng-click="html.toggle()">HTML</button>
+			<button ng-click="css.toggle()">CSS</button>
+		</div>
 
-<button ng-click="js.toggle()">JS</button>
-<button ng-click="html.toggle()">HTML</button>
-<button ng-click="css.toggle()">CSS</button>
 		<div rb-relay
 			relay-api="js"
 			group="1"
