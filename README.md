@@ -1,5 +1,5 @@
 # sranderley.github.io
 My Projects
-'''javascript
+```javascript
 console.log("this is a test");
-'''
+```
