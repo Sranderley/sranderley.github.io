@@ -1,11 +1,13 @@
-<div class="code-viewer-banner">
+
+
+<div class="demo-box-banner">
 	<button ng-click="code.toggle()">Peek</button>
 </div>
 	<div rb-toggle
 		toggle-api="code"
 		class="code-viewer"
 		ng-class="{
-			collapsed: !code.active,
+			collapsed: !ocde.active,
 			expanded: code.active
 		}"
 	>
@@ -146,4 +148,5 @@ function FakeController(){
 				</pre>
 			</prism>
 		</div>
-</div>
+	</div>
+<div class="demo-box-content"></div>

@@ -184,7 +184,13 @@ body{
 
 }
 
-.code-viewer-banner{
+.demo-box-banner{
 	height: 7vh;
 	background-color: #445B9F;
+}
+
+.demo-box-content{
+	height: 50vh;
+	background-color: white;
+	border-radius: 3px;
 }
