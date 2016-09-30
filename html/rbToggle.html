@@ -151,8 +151,9 @@ function rbToggle(){
 	>
 		Width
 	</button>
+	<button ng-click="wide.toggle();high.toggle();">Both</button>
 	<div class="resize"
-		ng-clss="{
+		ng-class="{
 			tall: high.active,
 			short: !high.active,
 			wide: wide.active,
