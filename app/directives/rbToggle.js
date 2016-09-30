@@ -15,6 +15,7 @@ function rbToggle(){
 			};
 
 			function toggle(){
+				console.log('working');
 				scope.toggleApi.active = !scope.toggleApi.active;
 			}
 		}
