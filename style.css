@@ -197,8 +197,9 @@ body{
 
 .resizeable-thing {
 	background-color: blue;
-	transition: height 0.2s;
-	transition: width 0.2s;
+	transition: height 0.2s, width 0.2s;
+	height: 200px;
+	width: 200px;
 }
 
 .resize.tall {
