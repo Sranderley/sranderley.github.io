@@ -1,5 +1,4 @@
 
-
 <div class="demo-box-banner">
 	<button ng-click="code.toggle()">Peek</button>
 </div>
@@ -7,7 +6,7 @@
 		toggle-api="code"
 		class="code-viewer"
 		ng-class="{
-			collapsed: !ocde.active,
+			collapsed: !code.active,
 			expanded: code.active
 		}"
 	>
@@ -31,40 +30,26 @@
 				<pre class="language-javascript">
 					<code class="language-javascript">
 angular
-	.module('bonsai')
-	.controller('FakeController', FakeController);
+	.module('reusableBehaviors')
+	.directive('rbToggle', rbToggle);
 
-FakeController.$inject = ['$scope'];
+function rbToggle(){
+	return {
+		restrict: 'A',
+		scope: {
+			toggleApi: '='
+		},
+		link: function(scope, elem, attr){
+			scope.toggleApi = {
+				active: false,
+				toggle: toggle
+			};
 
-function FakeController(){
-	var fc = this;
-}
-angular
-	.module('bonsai')
-	.controller('FakeController', FakeController);
-
-FakeController.$inject = ['$scope'];
-
-function FakeController(){
-	var fc = this;
-}
-angular
-	.module('bonsai')
-	.controller('FakeController', FakeController);
-
-FakeController.$inject = ['$scope'];
-
-function FakeController(){
-	var fc = this;
-}
-angular
-	.module('bonsai')
-	.controller('FakeController', FakeController);
-
-FakeController.$inject = ['$scope'];
-
-function FakeController(){
-	var fc = this;
+			function toggle(){
+				scope.toggleApi.active = !scope.toggleApi.active;
+			}
+		}
+	}
 }
 					</code>
 				</pre>
@@ -83,7 +68,9 @@ function FakeController(){
 			<prism>
 				<pre class="language-markup">
 					<code class="language-markup">
-&lt;p&gt; this is just a test &lt;/p&gt;
+
+
+&lt;div&gt; this is just a test &lt;/div&gt;
 &lt;p&gt; this is just a test &lt;/p&gt;
 &lt;p&gt; this is just a test &lt;/p&gt;
 &lt;p&gt; this is just a test &lt;/p&gt;
@@ -149,4 +136,29 @@ function FakeController(){
 			</prism>
 		</div>
 	</div>
-<div class="demo-box-content"></div>
+<div class="demo-box-content">
+	<button
+		rb-toggle
+		toggle-api="height"
+		ng-click="height.toggle()"
+	>
+		Height
+	</button>
+	<button
+		rb-toggle
+		toggle-api="width"
+		ng-click="width.toggle()"
+	>
+		Width
+	</button>
+	<div class="resizable-thing"
+		ng-clss="{
+			tall: height.active,
+			short: !height.active,
+			wide: width.active,
+			narrow: !width.active
+		}"
+	>
+
+	</div>
+</div>

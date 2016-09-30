@@ -194,3 +194,25 @@ body{
 	background-color: white;
 	border-radius: 3px;
 }
+
+.resizeable-thing {
+	background-color: blue;
+	transition: height 0.2s;
+	transition: width 0.2s;
+}
+
+.resize.tall {
+	height: 200px;
+}
+
+.resize.short {
+	height: 30px;
+}
+
+.resize.wide {
+	width: 200px;
+}
+
+.resize.narrow {
+	width: 30px;
+}

@@ -1,1 +1,151 @@
-<div>RELAY</div>
+
+<div class="demo-box-banner">
+	<button ng-click="code.toggle()">Peek</button>
+</div>
+	<div rb-toggle
+		toggle-api="code"
+		class="code-viewer"
+		ng-class="{
+			collapsed: !code.active,
+			expanded: code.active
+		}"
+	>
+		<div class="code-viewer-ribbon">
+			<button ng-click="js.toggle()">JS</button>
+			<button ng-click="html.toggle()">HTML</button>
+			<button ng-click="css.toggle()">CSS</button>
+		</div>
+
+		<div rb-relay
+			relay-api="js"
+			group="1"
+			first="true"
+			class="code-box"
+			ng-class="{
+				collapsed: !js.isActive(),
+				expanded: js.isActive()
+			}"
+		>
+			<prism>
+				<pre class="language-javascript">
+					<code class="language-javascript">
+angular
+	.module('bonsai')
+	.controller('FakeController', FakeController);
+
+FakeController.$inject = ['$scope'];
+
+function FakeController(){
+	var fc = this;
+}
+angular
+	.module('bonsai')
+	.controller('FakeController', FakeController);
+
+FakeController.$inject = ['$scope'];
+
+function FakeController(){
+	var fc = this;
+}
+angular
+	.module('bonsai')
+	.controller('FakeController', FakeController);
+
+FakeController.$inject = ['$scope'];
+
+function FakeController(){
+	var fc = this;
+}
+angular
+	.module('bonsai')
+	.controller('FakeController', FakeController);
+
+FakeController.$inject = ['$scope'];
+
+function FakeController(){
+	var fc = this;
+}
+					</code>
+				</pre>
+			</prism>
+		</div>
+
+		<div rb-relay
+			relay-api="html"
+			group="1"
+			class="code-box"
+			ng-class="{
+				collapsed: !html.isActive(),
+				expanded: html.isActive()
+			}"
+		>
+			<prism>
+				<pre class="language-markup">
+					<code class="language-markup">
+&lt;p&gt; this is just a test &lt;/p&gt;
+&lt;p&gt; this is just a test &lt;/p&gt;
+&lt;p&gt; this is just a test &lt;/p&gt;
+&lt;p&gt; this is just a test &lt;/p&gt;
+&lt;p&gt; this is just a test &lt;/p&gt;
+&lt;p&gt; this is just a test &lt;/p&gt;
+&lt;p&gt; this is just a test &lt;/p&gt;
+&lt;p&gt; this is just a test &lt;/p&gt;
+&lt;p&gt; this is just a test &lt;/p&gt;
+&lt;p&gt; this is just a test &lt;/p&gt;
+&lt;p&gt; this is just a test &lt;/p&gt;
+&lt;p&gt; this is just a test &lt;/p&gt;
+&lt;p&gt; this is just a test &lt;/p&gt;
+&lt;p&gt; this is just a test &lt;/p&gt;
+					</code>
+				</pre>
+			</prism>
+		</div>
+
+		<div rb-relay
+			relay-api="css"
+			group="1"
+			class="code-box"
+			ng-class="{
+				collapsed: !css.isActive(),
+				expanded: css.isActive()
+			}"
+		>
+			<prism>
+				<pre class="language-css">
+					<code class="language-css">
+.test {
+	background-color: green;
+	width: 20vw;
+	height: 20vh;
+}
+.test {
+	background-color: green;
+	width: 20vw;
+	height: 20vh;
+}
+.test {
+	background-color: green;
+	width: 20vw;
+	height: 20vh;
+}
+.test {
+	background-color: green;
+	width: 20vw;
+	height: 20vh;
+}
+.test {
+	background-color: green;
+	width: 20vw;
+	height: 20vh;
+}
+.test {
+	background-color: green;
+	width: 20vw;
+	height: 20vh;
+}
+					</code>
+				</pre>
+			</prism>
+		</div>
+	</div>
+<div class="demo-box-content"></div>
