@@ -195,7 +195,7 @@ body{
 	border-radius: 3px;
 }
 
-.resizeable-thing {
+.resize {
 	background-color: blue;
 	transition: height 0.2s, width 0.2s;
 	height: 200px;
