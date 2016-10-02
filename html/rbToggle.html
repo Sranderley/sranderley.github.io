@@ -1,228 +1,180 @@
+<div class="demo-card">
+	<div class="demo-banner">
+		<label class="title">Using rb-toggle</label>
+		<a href="https://github.com/sranderley/reusableBehaviors" class="demo-card-link"><i class="link-icon fa fa-github"></i></a>
+	</div>
 
-<div class="demo-box-banner">
-	<button ng-click="code.toggle()">Peek</button>
-</div>
-	<div rb-toggle
-		toggle-api="code"
-		class="code-viewer"
-		ng-class="{
-			collapsed: !code.active,
-			expanded: code.active
-		}"
-	>
-		<div class="code-viewer-ribbon">
-			<button ng-click="js.toggle()">JS</button>
-			<button ng-click="html.toggle()">HTML</button>
-			<button ng-click="css.toggle()">CSS</button>
-		</div>
+	<div class="demo-card-content">
+		<style>
+			.switch-container {
+				transition: background-color 0.1s;
+				border: 1px solid #999999;
+				border-radius: 5px;
+				width: 50px;
+				height: 25px;
+				cursor: pointer;
+				overflow: hidden;
+			}
 
-		<div rb-relay
-			relay-api="js"
-			group="1"
-			first="true"
-			class="code-box"
+			.switch-container.off{
+				background-color: #bbbbbb;
+			}
+
+			.switch-container.on{
+				background-color: blue;
+			}
+
+			.switch-text {
+				background-color: inherit;
+				color: white;
+				text-align: center;
+				transition: width 0.1s;
+				font-weight: bold;
+				line-height: 25px;
+				overflow: hidden;
+				float: left;
+				-webkit-touch-callout: none; /* iOS Safari */
+				-webkit-user-select: none;   /* Chrome/Safari/Opera */
+				-khtml-user-select: none;    /* Konqueror */
+				-moz-user-select: none;      /* Firefox */
+				-ms-user-select: none;       /* Internet Explorer/Edge */
+				user-select: none;
+			}
+
+			.switch-text.hidden {
+				width: 0;
+			}
+
+			.switch-text.shown {
+				width: 80%;
+			}
+
+			.slider {
+				background-color: white;
+				border: 1px solid #999999;
+				border-radius: 2px;
+				height: 23px;
+				width: 20%;
+				float: left;
+			}
+
+			.checkbox {
+				border: 1px solid #999999;
+				border-radius: 5px;
+				height: 25px;
+				width: 25px;
+				cursor: pointer;
+			}
+
+			.checkbox.on {
+				background-color: blue;
+			}
+
+			.checkbox[disabled] {
+				background-color: red;
+			}
+		</style>
+		<div class="shelf">
+			<label class="shelf-title">Checkbox</label>
+			<div class="code-toggle"
+				rb-toggle
+				toggle-api="checkboxCode"
+				ng-click="checkboxCode.toggle()"
+			>
+				<label class="code-toggle-text">&lt;/&gt;</label>
+			</div>
+			<div class="shelf-content">
+				<div class="checkbox"
+					rb-toggle
+					toggle-api="checkbox"
+					ng-class="{
+						on: checkbox.active
+					}"
+					ng-click="checkbox.toggle()"
+				>
+				</div>
+			</div>
+		<div
+			class="code-viewer"
 			ng-class="{
-				collapsed: !js.isActive(),
-				expanded: js.isActive()
+				collapsed: !checkboxCode.active,
+				expanded: checkboxCode.active
 			}"
 		>
-			<prism>
-				<pre class="language-javascript">
-					<code class="language-javascript">
-angular
-	.module('reusableBehaviors')
-	.directive('rbToggle', rbToggle);
+			<div class="code-viewer-ribbon">
+				<div class="ribbon-btn"
+					ng-click="js.toggle()"
+				>
+					<label class="ribbon-text">JS</label>
+				</div>
 
-function rbToggle(){
-	return {
-		restrict: 'A',
-		scope: {
-			toggleApi: '='
-		},
-		link: function(scope, elem, attr){
-			scope.toggleApi = {
-				active: false,
-				toggle: toggle
-			};
+				<div class="ribbon-btn"
+					ng-click="html.toggle()"
+				>
+					<label class="ribbon-text">HTML</label>
+				</div>
 
-			function toggle(){
-				scope.toggleApi.active = !scope.toggleApi.active;
+				<div class="ribbon-btn"
+					ng-click="css.toggle()"
+				>
+					<label class="ribbon-text">CSS</label>
+				</div>
+			</div>
+
+			<div rb-relay
+				relay-api="js"
+				group="1"
+				first="true"
+				class="code-box"
+				ng-class="{
+					collapsed: !js.isActive(),
+					expanded: js.isActive()
+				}"
+			>
+				<prism>
+					<pre class="language-javascript">
+						<code class="language-javascript">
+	angular
+		.module('reusableBehaviors')
+		.directive('rbToggle', rbToggle);
+
+	function rbToggle(){
+		return {
+			restrict: 'A',
+			scope: {
+				toggleApi: '='
+			},
+			link: function(scope, elem, attr){
+				scope.toggleApi = {
+					active: false,
+					toggle: toggle
+				};
+
+				function toggle(){
+					scope.toggleApi.active = !scope.toggleApi.active;
+				}
 			}
 		}
 	}
-}
-					</code>
-				</pre>
-			</prism>
-		</div>
+						</code>
+					</pre>
+				</prism>
+			</div>
 
-		<div rb-relay
-			relay-api="html"
-			group="1"
-			class="code-box"
-			ng-class="{
-				collapsed: !html.isActive(),
-				expanded: html.isActive()
-			}"
-		>
-			<prism>
-				<pre class="language-markup">
-					<code class="language-markup">
-Switch
-&lt;div class="switch-container"
-	rb-toggle
-	toggle-api="switch"
-	ng-class="{
-		off: !switch.active,
-		on: switch.active
-	}"
-	ng-click="switch.toggle()"
-&gt;
-	&lt;div class="switch-text"
-		ng-class="{
-			hidden: !switch.active,
-			shown: switch.active
-		}"
-	&gt;ON&lt;/div&gt;
-	&lt;div class="slider"&gt;&lt;/div&gt;
-	&lt;div class="switch-text"
-		ng-class="{
-			hidden: switch.active,
-			shown: !switch.active
-		}"
-	&gt;OFF&lt;/div&gt;
-&lt;/div&gt;
-					</code>
-				</pre>
-			</prism>
-		</div>
-
-		<div rb-relay
-			relay-api="css"
-			group="1"
-			class="code-box"
-			ng-class="{
-				collapsed: !css.isActive(),
-				expanded: css.isActive()
-			}"
-		>
-			<prism>
-				<pre class="language-css">
-					<code class="language-css">
-.switch-container {
-	transition: background-color 0.1s;
-	border: 1px solid #999999;
-	border-radius: 5px;
-	width: 50px;
-	height: 25px;
-	cursor: pointer;
-	overflow: hidden;
-}
-
-.switch-container.off{
-	background-color: #bbbbbb;
-}
-
-.switch-container.on{
-	background-color: blue;
-}
-
-.switch-text {
-	background-color: inherit;
-	color: white;
-	text-align: center;
-	transition: width 0.1s;
-	font-weight: bold;
-	line-height: 25px;
-	overflow: hidden;
-	float: left;
-	-webkit-touch-callout: none; /* iOS Safari */
-	-webkit-user-select: none;   /* Chrome/Safari/Opera */
-	-khtml-user-select: none;    /* Konqueror */
-	-moz-user-select: none;      /* Firefox */
-	-ms-user-select: none;       /* Internet Explorer/Edge */
-	user-select: none;
-}
-
-.switch-text.hidden {
-	width: 0;
-}
-
-.switch-text.shown {
-	width: 80%;
-}
-
-.slider {
-	background-color: white;
-	border: 1px solid #999999;
-	border-radius: 2px;
-	height: 23px;
-	width: 20%;
-	float: left;
-}
-					</code>
-				</pre>
-			</prism>
-		</div>
-	</div>
-<div class="demo-box-content">
-
-	<style>
-.switch-container {
-	transition: background-color 0.1s;
-	border: 1px solid #999999;
-	border-radius: 5px;
-	width: 50px;
-	height: 25px;
-	cursor: pointer;
-	overflow: hidden;
-}
-
-.switch-container.off{
-	background-color: #bbbbbb;
-}
-
-.switch-container.on{
-	background-color: blue;
-}
-
-.switch-text {
-	background-color: inherit;
-	color: white;
-	text-align: center;
-	transition: width 0.1s;
-	font-weight: bold;
-	line-height: 25px;
-	overflow: hidden;
-	float: left;
-	-webkit-touch-callout: none; /* iOS Safari */
-	-webkit-user-select: none;   /* Chrome/Safari/Opera */
-	-khtml-user-select: none;    /* Konqueror */
-	-moz-user-select: none;      /* Firefox */
-	-ms-user-select: none;       /* Internet Explorer/Edge */
-	user-select: none;
-}
-
-.switch-text.hidden {
-	width: 0;
-}
-
-.switch-text.shown {
-	width: 80%;
-}
-
-.slider {
-	background-color: white;
-	border: 1px solid #999999;
-	border-radius: 2px;
-	height: 23px;
-	width: 20%;
-	float: left;
-}
-	</style>
-
+			<div rb-relay
+				relay-api="html"
+				group="1"
+				class="code-box"
+				ng-class="{
+					collapsed: !html.isActive(),
+					expanded: html.isActive()
+				}"
+			>
+				<prism>
+					<pre class="language-markup">
+						<code class="language-markup">
 	Switch
-	<div class="switch-container"
+	&lt;div class="switch-container"
 		rb-toggle
 		toggle-api="switch"
 		ng-class="{
@@ -230,30 +182,160 @@ Switch
 			on: switch.active
 		}"
 		ng-click="switch.toggle()"
-	>
-		<div class="switch-text"
+	&gt;
+		&lt;div class="switch-text"
 			ng-class="{
 				hidden: !switch.active,
 				shown: switch.active
 			}"
-		>
-			ON
-		</div>
-		<div class="slider"></div>
-		<div class="switch-text"
+		&gt;ON&lt;/div&gt;
+		&lt;div class="slider"&gt;&lt;/div&gt;
+		&lt;div class="switch-text"
 			ng-class="{
 				hidden: switch.active,
 				shown: !switch.active
 			}"
-		>
-			OFF
+		&gt;OFF&lt;/div&gt;
+	&lt;/div&gt;
+						</code>
+					</pre>
+				</prism>
+			</div>
+
+			<div rb-relay
+				relay-api="css"
+				group="1"
+				class="code-box"
+				ng-class="{
+					collapsed: !css.isActive(),
+					expanded: css.isActive()
+				}"
+			>
+				<prism>
+					<pre class="language-css">
+						<code class="language-css">
+	.switch-container {
+		transition: background-color 0.1s;
+		border: 1px solid #999999;
+		border-radius: 5px;
+		width: 50px;
+		height: 25px;
+		cursor: pointer;
+		overflow: hidden;
+	}
+
+	.switch-container.off{
+		background-color: #bbbbbb;
+	}
+
+	.switch-container.on{
+		background-color: blue;
+	}
+
+	.switch-text {
+		background-color: inherit;
+		color: white;
+		text-align: center;
+		transition: width 0.1s;
+		font-weight: bold;
+		line-height: 25px;
+		overflow: hidden;
+		float: left;
+		-webkit-touch-callout: none; /* iOS Safari */
+		-webkit-user-select: none;   /* Chrome/Safari/Opera */
+		-khtml-user-select: none;    /* Konqueror */
+		-moz-user-select: none;      /* Firefox */
+		-ms-user-select: none;       /* Internet Explorer/Edge */
+		user-select: none;
+	}
+
+	.switch-text.hidden {
+		width: 0;
+	}
+
+	.switch-text.shown {
+		width: 80%;
+	}
+
+	.slider {
+		background-color: white;
+		border: 1px solid #999999;
+		border-radius: 2px;
+		height: 23px;
+		width: 20%;
+		float: left;
+	}
+						</code>
+					</pre>
+				</prism>
+			</div>
+		</div>
+		</div>
+
+		<div class="shelf">
+			<label class="shelf-title">Switch</label>
+			<div class="code-toggle"
+				rb-toggle
+				toggle-api="checkboxCode"
+				ng-click="checkboxCode.toggle()"
+			>
+				<label class="code-toggle-text">&lt;/&gt;</label>
+			</div>
+			<div class="shelf-content">
+				<div class="switch-container"
+					rb-toggle
+					toggle-api="switch"
+					ng-class="{
+						off: !switch.active,
+						on: switch.active
+					}"
+					ng-click="switch.toggle()"
+				>
+					<div class="switch-text"
+						ng-class="{
+							hidden: !switch.active,
+							shown: switch.active
+						}"
+					>ON</div>
+
+					<div class="slider"></div>
+
+					<div class="switch-text"
+						ng-class="{
+							hidden: switch.active,
+							shown: !switch.active
+						}"
+					>OFF</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="shelf">
+			<label class="shelf-title">Layout</label>
+			<div class="code-toggle"
+				rb-toggle
+				toggle-api="checkboxCode"
+				ng-click="checkboxCode.toggle()"
+			>
+				<label class="code-toggle-text">&lt;/&gt;</label>
+			</div>
+			<div class="shelf-content">
+
+			</div>
+		</div>
+
+		<div class="shelf">
+			<label class="shelf-title">Styles</label>
+			<div class="code-toggle"
+				rb-toggle
+				toggle-api="checkboxCode"
+				ng-click="checkboxCode.toggle()"
+			>
+				<label class="code-toggle-text">&lt;/&gt;</label>
+			</div>
+			<div class="shelf-content">
+
+			</div>
 		</div>
 	</div>
-
-
-
-	Checkbox
-	Layout
-	Styles
-	Text Formatting?
 </div>

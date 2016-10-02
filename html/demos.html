@@ -1,5 +1,5 @@
 <div class="banner">
-	<div class="title">Sranderley</div>
+	<label class="title">Sranderley</label>
 </div>
 
 <div rb-toggle
@@ -24,14 +24,14 @@
 	<div class="nav-content">
 
 		<div rb-toggle
-			toggle-api="rc"
+			toggle-api="rb"
 			class="nav-item"
 			ng-class="{
-				collapsed: !rc.active,
-				expanded: rc.active
+				collapsed: !rb.active,
+				expanded: rb.active
 			}"
 		>
-			<a href ng-click="rc.toggle()">
+			<a href ng-click="rb.toggle()">
 				<div class="nav-list-item">
 					<label class="nav-item-text">reusableBehaviors</label>
 					<i class="fa fa-caret-down"></i>
@@ -48,6 +48,36 @@
 				<div class="nav-list-item">
 					<label class="nav-item-text">
 						rbRelay
+					</label>
+				</div>
+			</a>
+		</div>
+
+		<div rb-toggle
+			toggle-api="rc"
+			class="nav-item"
+			ng-class="{
+				collapsed: !rc.active,
+				expanded: rc.active
+			}"
+		>
+			<a href ng-click="rc.toggle()">
+				<div class="nav-list-item">
+					<label class="nav-item-text">reusableComponents</label>
+					<i class="fa fa-caret-down"></i>
+				</div>
+			</a>
+			<a href="#/demos/" class="child">
+				<div class="nav-list-item">
+					<label class="nav-item-text">
+						rcToggle
+					</label>
+				</div>
+			</a>
+			<a href="#/demos/" class="child">
+				<div class="nav-list-item">
+					<label class="nav-item-text">
+						rcRelay
 					</label>
 				</div>
 			</a>
@@ -84,5 +114,8 @@
 		}"
 	>
 		<div class="ui-view"></div>
+	</div>
+	<div class="footer">
+		Test
 	</div>
 </div>

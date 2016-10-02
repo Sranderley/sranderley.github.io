@@ -1,4 +1,4 @@
-angular.module('demos', ['ui.router']);
+angular.module('demos', ['ui.router', 'ngAria']);
 
 angular.module('demos')
 	.config(config);
