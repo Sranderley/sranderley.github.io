@@ -13,6 +13,10 @@ body {
 	background-color: #E1E3E8;
 }
 
+pre {
+	height: 50vh;
+}
+
 .max {
 	margin: 0;
 	overflow: hidden;
@@ -255,8 +259,6 @@ a > .link-icon {
 
 .code-box {
 	float: left;
-	height: 60vh;
-	overflow-y: scroll;
 	transition: width 0.2s;
 }
 

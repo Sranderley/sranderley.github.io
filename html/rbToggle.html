@@ -354,32 +354,33 @@
 			</rc-code-viewer>
 		</div>
 
-		<div class="shelf">
-			<label class="shelf-title">Layout</label>
-			<div class="code-toggle"
-				rb-toggle
-				toggle-api="checkboxCode"
-				ng-click="checkboxCode.toggle()"
-			>
-				<label class="code-toggle-text">&lt;/&gt;</label>
-			</div>
-			<div class="shelf-content">
+		<rc-shelf name="layout">
+			<shelf-title>Layout</shelf-title>
+			<shelf-content></shelf-content>
+			<rc-code-viewer name="layout">
+				<js-code>
+	console.log('test');
+				</js-code>
+				<html-code>
+	&lt;div class="test"&gt;Test&lt;/div&gt;
+				</html-code>
+				<css-code>
+	.test {
+		background-color: blue;
+	}
+				</css-code>
+			</rc-code-viewer>
+		</rc-shelf>
 
-			</div>
-		</div>
+		<rc-shelf name="styles">
+			<shelf-title>Styles</shelf-title>
+			<shelf-content></shelf-content>
+			<rc-code-viewer name="styles">
+				<js-code>console.log('test');</js-code>
+				<html-code>&lt;div class="test"&gt;Test&lt;/div&gt;</html-code>
+				<css-code>.test { background-color: blue; }</css-code>
+			</rc-code-viewer>
+		</rc-shelf>
 
-		<div class="shelf">
-			<label class="shelf-title">Styles</label>
-			<div class="code-toggle"
-				rb-toggle
-				toggle-api="checkboxCode"
-				ng-click="checkboxCode.toggle()"
-			>
-				<label class="code-toggle-text">&lt;/&gt;</label>
-			</div>
-			<div class="shelf-content">
-
-			</div>
-		</div>
 	</div>
 </div>

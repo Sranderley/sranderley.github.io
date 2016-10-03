@@ -36,7 +36,6 @@ function rbRelayService(){
 	return s;
 
 	function register(index, isFirst){
-		console.log(index);
 		if(!groups[index]) groups[index] = 0;
 		if(! (s.active[index] >= 0) ) s.active[index] = -1;
 
@@ -50,7 +49,6 @@ function rbRelayService(){
 	}
 
 	function toggle(index, id){
-		console.log(index);
 		s.active[index] = id;
 	}
 

@@ -15,7 +15,8 @@ function rcCodeViewer() {
 			name: '@'
 		},
 		template: function(tElem, tAttr){
-		return `<div class="code-viewer">
+		return `
+		<div class="code-viewer">
 			<div class="code-viewer-ribbon">
 				<div class="ribbon-btn" ng-click="` + tAttr.name + `Js.toggle()">
 					<label class="ribbon-text">JS</label>
@@ -88,6 +89,47 @@ function rcCodeViewer() {
 		</div>`;
 		},
 		link: function (scope, elem, attr) {
+		}
+	}
+}
+
+rc.directive('rcShelf', rcShelf);
+
+function rcShelf() {
+	return {
+		restrict: 'E',
+		replace: true,
+		transclude: {
+			'title': 'shelfTitle',
+			'content': 'shelfContent',
+			'rc-code-viewer': 'rcCodeViewer'
+		},
+		scope: {
+			name: '='
+		},
+		template: function(tElem, tAttr) {
+			return `<div class="shelf">
+			<label class="shelf-title" ng-transclude="title"></label>
+			<div class="code-toggle"
+				rb-toggle
+				toggle-api="` + tAttr.name + `"
+				ng-click="` + tAttr.name + `.toggle()"
+			>
+				<label class="code-toggle-text">&lt;/&gt;</label>
+			</div>
+			<div class="shelf-content" ng-transclude="content">
+			</div>
+			<div ng-transclude="rc-code-viewer"
+				class="code-viewer"
+				ng-class="{
+					collapsed: !` + tAttr.name + `.active,
+					expanded: ` + tAttr.name + `.active
+				}"
+			>
+			</div>
+		</div>`;
+		},
+		link: function(scope, elem, attr) {
 		}
 	}
 }
