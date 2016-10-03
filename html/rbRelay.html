@@ -1,151 +1,107 @@
+<rc-code-viewer
+	name="test"
+>
+	<js-code>
+	angular
+		.module('reusableBehaviors')
+		.directive('rbToggle', rbToggle);
 
-<div class="demo-box-banner">
-	<button ng-click="code.toggle()">Peek</button>
-</div>
-	<div rb-toggle
-		toggle-api="code"
-		class="code-viewer"
+	function rbToggle(){
+		return {
+			restrict: 'A',
+			scope: {
+				toggleApi: '='
+			},
+			link: function(scope, elem, attr){
+				scope.toggleApi = {
+					active: false,
+					toggle: toggle
+				};
+
+				function toggle(){
+					scope.toggleApi.active = !scope.toggleApi.active;
+				}
+			}
+		}
+	}
+	</js-code>
+	<html-code>
+	Switch
+	&lt;div class="switch-container"
+		rb-toggle
+		toggle-api="switch"
 		ng-class="{
-			collapsed: !code.active,
-			expanded: code.active
+			off: !switch.active,
+			on: switch.active
 		}"
-	>
-		<div class="code-viewer-ribbon">
-			<button ng-click="js.toggle()">JS</button>
-			<button ng-click="html.toggle()">HTML</button>
-			<button ng-click="css.toggle()">CSS</button>
-		</div>
-
-		<div rb-relay
-			relay-api="js"
-			group="1"
-			first="true"
-			class="code-box"
+		ng-click="switch.toggle()"
+	&gt;
+		&lt;div class="switch-text"
 			ng-class="{
-				collapsed: !js.isActive(),
-				expanded: js.isActive()
+				hidden: !switch.active,
+				shown: switch.active
 			}"
-		>
-			<prism>
-				<pre class="language-javascript">
-					<code class="language-javascript">
-angular
-	.module('bonsai')
-	.controller('FakeController', FakeController);
-
-FakeController.$inject = ['$scope'];
-
-function FakeController(){
-	var fc = this;
-}
-angular
-	.module('bonsai')
-	.controller('FakeController', FakeController);
-
-FakeController.$inject = ['$scope'];
-
-function FakeController(){
-	var fc = this;
-}
-angular
-	.module('bonsai')
-	.controller('FakeController', FakeController);
-
-FakeController.$inject = ['$scope'];
-
-function FakeController(){
-	var fc = this;
-}
-angular
-	.module('bonsai')
-	.controller('FakeController', FakeController);
-
-FakeController.$inject = ['$scope'];
-
-function FakeController(){
-	var fc = this;
-}
-					</code>
-				</pre>
-			</prism>
-		</div>
-
-		<div rb-relay
-			relay-api="html"
-			group="1"
-			class="code-box"
+		&gt;ON&lt;/div&gt;
+		&lt;div class="slider"&gt;&lt;/div&gt;
+		&lt;div class="switch-text"
 			ng-class="{
-				collapsed: !html.isActive(),
-				expanded: html.isActive()
+				hidden: switch.active,
+				shown: !switch.active
 			}"
-		>
-			<prism>
-				<pre class="language-markup">
-					<code class="language-markup">
-&lt;p&gt; this is just a test &lt;/p&gt;
-&lt;p&gt; this is just a test &lt;/p&gt;
-&lt;p&gt; this is just a test &lt;/p&gt;
-&lt;p&gt; this is just a test &lt;/p&gt;
-&lt;p&gt; this is just a test &lt;/p&gt;
-&lt;p&gt; this is just a test &lt;/p&gt;
-&lt;p&gt; this is just a test &lt;/p&gt;
-&lt;p&gt; this is just a test &lt;/p&gt;
-&lt;p&gt; this is just a test &lt;/p&gt;
-&lt;p&gt; this is just a test &lt;/p&gt;
-&lt;p&gt; this is just a test &lt;/p&gt;
-&lt;p&gt; this is just a test &lt;/p&gt;
-&lt;p&gt; this is just a test &lt;/p&gt;
-&lt;p&gt; this is just a test &lt;/p&gt;
-					</code>
-				</pre>
-			</prism>
-		</div>
+		&gt;OFF&lt;/div&gt;
+	&lt;/div&gt;
+	</html-code>
+	<css-code>
+	.switch-container {
+		transition: background-color 0.1s;
+		border: 1px solid #999999;
+		border-radius: 5px;
+		width: 50px;
+		height: 25px;
+		cursor: pointer;
+		overflow: hidden;
+	}
 
-		<div rb-relay
-			relay-api="css"
-			group="1"
-			class="code-box"
-			ng-class="{
-				collapsed: !css.isActive(),
-				expanded: css.isActive()
-			}"
-		>
-			<prism>
-				<pre class="language-css">
-					<code class="language-css">
-.test {
-	background-color: green;
-	width: 20vw;
-	height: 20vh;
-}
-.test {
-	background-color: green;
-	width: 20vw;
-	height: 20vh;
-}
-.test {
-	background-color: green;
-	width: 20vw;
-	height: 20vh;
-}
-.test {
-	background-color: green;
-	width: 20vw;
-	height: 20vh;
-}
-.test {
-	background-color: green;
-	width: 20vw;
-	height: 20vh;
-}
-.test {
-	background-color: green;
-	width: 20vw;
-	height: 20vh;
-}
-					</code>
-				</pre>
-			</prism>
-		</div>
-	</div>
-<div class="demo-box-content"></div>
+	.switch-container.off{
+		background-color: #bbbbbb;
+	}
+
+	.switch-container.on{
+		background-color: blue;
+	}
+
+	.switch-text {
+		background-color: inherit;
+		color: white;
+		text-align: center;
+		transition: width 0.1s;
+		font-weight: bold;
+		line-height: 25px;
+		overflow: hidden;
+		float: left;
+		-webkit-touch-callout: none; /* iOS Safari */
+		-webkit-user-select: none;   /* Chrome/Safari/Opera */
+		-khtml-user-select: none;    /* Konqueror */
+		-moz-user-select: none;      /* Firefox */
+		-ms-user-select: none;       /* Internet Explorer/Edge */
+		user-select: none;
+	}
+
+	.switch-text.hidden {
+		width: 0;
+	}
+
+	.switch-text.shown {
+		width: 80%;
+	}
+
+	.slider {
+		background-color: white;
+		border: 1px solid #999999;
+		border-radius: 2px;
+		height: 23px;
+		width: 20%;
+		float: left;
+	}
+	</css-code>
+</rc-code-viewer>

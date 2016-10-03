@@ -1,4 +1,4 @@
-angular.module('demos', ['ui.router', 'ngAria']);
+angular.module('demos', ['ui.router', 'ngAria', 'reusableBehaviors', 'reusableComponents']);
 
 angular.module('demos')
 	.config(config);
