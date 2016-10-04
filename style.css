@@ -239,7 +239,7 @@ a > .link-icon {
 
 .code-toggle-text {
 	cursor: inherit;
-	line-height: 3vw;
+	line-height: 4vh;
 	font-weight: lighter;
 	font-size: 1.5em;
 	color: #333333;
@@ -260,7 +260,7 @@ a > .link-icon {
 
 .shelf-drawer {
     display: table-cell;
-    width: 2%;
+    width: 5%;
     margin-bottom: 0;
 	height: 10vh;
 	text-align: center;
@@ -271,8 +271,8 @@ a > .link-icon {
 }
 
 .shelf-drawer > .drawer-content {
-	display: inline-block;
-	padding-top: 3vh;
+	display: block;
+	padding: 3vh;
 }
 
 .code-box {
@@ -355,6 +355,7 @@ a > .link-icon {
 }
 
 .switch-container[disabled] {
+	background-color: #CCCCCC;
 	border: 1px solid #AAAAAA;
 }
 
@@ -435,4 +436,42 @@ a > .link-icon {
 
 .checkbox-label[disabled] {
 	color: #AAAAAA;
+}
+
+.align-btn {
+	display: inline-block;
+	height: 4vh;
+	width: 60px;
+	background-color: #AAAAAA;
+	color: white;
+	border-radius: 5px;
+	font-size: 1.5em;
+	line-height: 4vh;
+	cursor: pointer;
+}
+
+.align-btn:hover {
+	background-color: #999999;
+}
+
+.layout-viewer {
+	margin-top: 1vh;
+	border: 1px solid #CCCCCC;
+	width: 100%;
+	padding: 20px 10px;
+	background-color: white;
+}
+
+.layout-viewer.left {
+	text-align: left;
+}
+
+.layout-viewer.right {
+	text-align: right;
+}
+
+.layout-viewer.cols {
+	-moz-column-count: 2;
+	-webkit-column-count: 2;
+	column-count: 2;
 }
