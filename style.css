@@ -406,6 +406,7 @@ a > .link-icon {
 }
 
 .checkbox {
+	position: relative;
 	border: 1px solid #777777;
 	border-radius: 5px;
 	height: 25px;

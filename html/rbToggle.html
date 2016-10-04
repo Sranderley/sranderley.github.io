@@ -280,7 +280,7 @@
 	<rc-shelf name="layout">
 		<shelf-title>Layout</shelf-title>
 		<shelf-content>
-			<rc-shelf-drawer style="width: 40%;">
+			<rc-shelf-drawer>
 				<div class="align-btn"
 					rb-toggle
 					toggle-api="layout"
@@ -296,20 +296,17 @@
 					}"
 				>
 					<span>
-						Tell me how you want me to align my text.<br>
-						Left or Right?<br>
-						It's your call.
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 					</span>
 				</div>
 			</rc-shelf-drawer>
-			<rc-shelf-drawer style="width: 60%;">
+			<rc-shelf-drawer>
 				<div class="align-btn"
 					rb-toggle
 					toggle-api="columns"
 					ng-click="columns.toggle()"
 				>
-					<i class="fa fa-align-left" ng-show="columns.active"></i>
-					<i class="fa fa-align-right" ng-show="!columns.active"></i>
+					<i class="fa fa-columns"></i>
 				</div>
 				<div class="layout-viewer"
 					ng-class="{
@@ -324,20 +321,6 @@
 			<div style="clear: both;"></div>
 		</shelf-content>
 		<rc-code-viewer name="layout">
-			<js-code>console.log('test');</js-code>
-			<html-code>&lt;div class="test"&gt;Test&lt;/div&gt;</html-code>
-			<css-code>.test { background-color: blue; }</css-code>
-		</rc-code-viewer>
-	</rc-shelf>
-
-	<rc-shelf name="style">
-		<shelf-title>Style</shelf-title>
-		<shelf-content>
-			<rc-shelf-drawer>
-
-			</rc-shelf-drawer>
-		</shelf-content>
-		<rc-code-viewer name="style">
 			<js-code>console.log('test');</js-code>
 			<html-code>&lt;div class="test"&gt;Test&lt;/div&gt;</html-code>
 			<css-code>.test { background-color: blue; }</css-code>
