@@ -128,8 +128,44 @@ function rcShelf() {
 			>
 			</div>
 		</div>`;
-		},
-		link: function(scope, elem, attr) {
 		}
+	}
+}
+
+rc.directive('rcShelfDrawer', rcShelfDrawer);
+
+function rcShelfDrawer () {
+	return {
+		restrict: 'E',
+		replace: true,
+		transclude: true,
+		template: '<div class="shelf-drawer"><div class="drawer-content" ng-transclude></div></div>'
+	}
+}
+
+rc.directive('rcDemoCard', rcDemoCard);
+
+function rcDemoCard () {
+	return {
+		restrict: 'E',
+		replace: true,
+		transclude: true,
+		scope: {
+			githubLink: '=',
+			cardTitle: '@'
+		},
+		template: function (tElem, tAttr) {
+			return `<div class="demo-card">
+				<div class="demo-banner">
+					<label class="title">` + tAttr.cardTitle + `</label>
+					<a href="` + tAttr.githubLink + `" class="demo-card-link"><i class="link-icon fa fa-github"></i></a>
+				</div>
+				<div class="demo-card-content" ng-transclude></div>
+			</div>`;
+		},
+		link: function () {
+
+		}
+
 	}
 }

@@ -1,107 +1,147 @@
-<rc-code-viewer
-	name="test"
->
-	<js-code>
-	angular
-		.module('reusableBehaviors')
-		.directive('rbToggle', rbToggle);
+<rc-demo-card card-title="Using rb-relay" github-link="'https://sranderley.github.io'">
+	<rc-shelf name="buttons">
+		<shelf-title>Buttons</shelf-title>
+		<shelf-content>
+			<rc-shelf-drawer>
+				<div class="checkbox"
+					rb-toggle
+					toggle-api="checkbox"
+					ng-class="{
+						on: checkbox.active
+					}"
+					ng-click="checkbox.toggle()"
+				>
+				</div>
+			</rc-shelf-drawer>
+			<rc-shelf-drawer>
+				<div class="checkbox"
+					rb-toggle
+					toggle-api="checkbox"
+					ng-class="{
+						on: checkbox.active
+					}"
+					ng-click="checkbox.toggle()"
+				>
+				</div>
+			</rc-shelf-drawer>
+			<rc-shelf-drawer>
+				<div class="checkbox"
+					rb-toggle
+					toggle-api="checkbox"
+					ng-class="{
+						on: checkbox.active
+					}"
+					ng-click="checkbox.toggle()"
+				>
+				</div>
+			</rc-shelf-drawer>
+		</shelf-content>
+		<rc-code-viewer
+			name="test"
+		>
+			<js-code>
+			angular
+				.module('reusableBehaviors')
+				.directive('rbToggle', rbToggle);
 
-	function rbToggle(){
-		return {
-			restrict: 'A',
-			scope: {
-				toggleApi: '='
-			},
-			link: function(scope, elem, attr){
-				scope.toggleApi = {
-					active: false,
-					toggle: toggle
-				};
+			function rbToggle(){
+				return {
+					restrict: 'A',
+					scope: {
+						toggleApi: '='
+					},
+					link: function(scope, elem, attr){
+						scope.toggleApi = {
+							active: false,
+							toggle: toggle
+						};
 
-				function toggle(){
-					scope.toggleApi.active = !scope.toggleApi.active;
+						function toggle(){
+							scope.toggleApi.active = !scope.toggleApi.active;
+						}
+					}
 				}
 			}
-		}
-	}
-	</js-code>
-	<html-code>
-	Switch
-	&lt;div class="switch-container"
-		rb-toggle
-		toggle-api="switch"
-		ng-class="{
-			off: !switch.active,
-			on: switch.active
-		}"
-		ng-click="switch.toggle()"
-	&gt;
-		&lt;div class="switch-text"
-			ng-class="{
-				hidden: !switch.active,
-				shown: switch.active
-			}"
-		&gt;ON&lt;/div&gt;
-		&lt;div class="slider"&gt;&lt;/div&gt;
-		&lt;div class="switch-text"
-			ng-class="{
-				hidden: switch.active,
-				shown: !switch.active
-			}"
-		&gt;OFF&lt;/div&gt;
-	&lt;/div&gt;
-	</html-code>
-	<css-code>
-	.switch-container {
-		transition: background-color 0.1s;
-		border: 1px solid #999999;
-		border-radius: 5px;
-		width: 50px;
-		height: 25px;
-		cursor: pointer;
-		overflow: hidden;
-	}
+			</js-code>
+			<html-code>
+			Switch
+			&lt;div class="switch-container"
+				rb-toggle
+				toggle-api="switch"
+				ng-class="{
+					off: !switch.active,
+					on: switch.active
+				}"
+				ng-click="switch.toggle()"
+			&gt;
+				&lt;div class="switch-text"
+					ng-class="{
+						hidden: !switch.active,
+						shown: switch.active
+					}"
+				&gt;ON&lt;/div&gt;
+				&lt;div class="slider"&gt;&lt;/div&gt;
+				&lt;div class="switch-text"
+					ng-class="{
+						hidden: switch.active,
+						shown: !switch.active
+					}"
+				&gt;OFF&lt;/div&gt;
+			&lt;/div&gt;
+			</html-code>
+			<css-code>
+			.switch-container {
+				transition: background-color 0.1s;
+				border: 1px solid #999999;
+				border-radius: 5px;
+				width: 50px;
+				height: 25px;
+				cursor: pointer;
+				overflow: hidden;
+			}
 
-	.switch-container.off{
-		background-color: #bbbbbb;
-	}
+			.switch-container.off{
+				background-color: #bbbbbb;
+			}
 
-	.switch-container.on{
-		background-color: blue;
-	}
+			.switch-container.on{
+				background-color: blue;
+			}
 
-	.switch-text {
-		background-color: inherit;
-		color: white;
-		text-align: center;
-		transition: width 0.1s;
-		font-weight: bold;
-		line-height: 25px;
-		overflow: hidden;
-		float: left;
-		-webkit-touch-callout: none; /* iOS Safari */
-		-webkit-user-select: none;   /* Chrome/Safari/Opera */
-		-khtml-user-select: none;    /* Konqueror */
-		-moz-user-select: none;      /* Firefox */
-		-ms-user-select: none;       /* Internet Explorer/Edge */
-		user-select: none;
-	}
+			.switch-text {
+				background-color: inherit;
+				color: white;
+				text-align: center;
+				transition: width 0.1s;
+				font-weight: bold;
+				line-height: 25px;
+				overflow: hidden;
+				float: left;
+				-webkit-touch-callout: none; /* iOS Safari */
+				-webkit-user-select: none;   /* Chrome/Safari/Opera */
+				-khtml-user-select: none;    /* Konqueror */
+				-moz-user-select: none;      /* Firefox */
+				-ms-user-select: none;       /* Internet Explorer/Edge */
+				user-select: none;
+			}
 
-	.switch-text.hidden {
-		width: 0;
-	}
+			.switch-text.hidden {
+				width: 0;
+			}
 
-	.switch-text.shown {
-		width: 80%;
-	}
+			.switch-text.shown {
+				width: 80%;
+			}
 
-	.slider {
-		background-color: white;
-		border: 1px solid #999999;
-		border-radius: 2px;
-		height: 23px;
-		width: 20%;
-		float: left;
-	}
-	</css-code>
-</rc-code-viewer>
+			.slider {
+				background-color: white;
+				border: 1px solid #999999;
+				border-radius: 2px;
+				height: 23px;
+				width: 20%;
+				float: left;
+			}
+			</css-code>
+		</rc-code-viewer>
+	</rc-shelf>
+</rc-demo-card>
