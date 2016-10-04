@@ -76,7 +76,8 @@
 							shown: !switch.active
 						}"
 					>OFF</div>
-				</div>
+				</div><br>
+				<label class="switch-label">Switch</label>
 			</rc-shelf-drawer>
 			<rc-shelf-drawer>
 				<div class="switch-container"
@@ -128,7 +129,37 @@
 							shown: !switch.active
 						}"
 					>OFF</div>
-				</div>
+				</div><br>
+				<label class="switch-label">Linked Switches</label>
+			</rc-shelf-drawer>
+			<rc-shelf-drawer>
+				<div class="switch-container"
+					rb-toggle
+					toggle-api="switch"
+					ng-class="{
+						off: !switch.active,
+						on: switch.active
+					}"
+					ng-click="switch.toggle()"
+					disabled="true"
+				>
+					<div class="switch-text"
+						ng-class="{
+							hidden: !switch.active,
+							shown: switch.active
+						}"
+					>ON</div>
+
+					<div class="slider"></div>
+
+					<div class="switch-text"
+						ng-class="{
+							hidden: switch.active,
+							shown: !switch.active
+						}"
+					>OFF</div>
+				</div><br>
+				<label class="switch-label" disabled="true">Disabled Switch</label>
 			</rc-shelf-drawer>
 		</shelf-content>
 		<rc-code-viewer name="switch">
