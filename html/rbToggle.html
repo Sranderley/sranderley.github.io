@@ -1,4 +1,4 @@
-<rc-demo-card card-title="Using rb-toggle" github-link="'https://sranderley.github.io/reusableBehaviors'">
+<rc-demo-card card-title="Using rb-toggle" github-link="'https://github.com/sranderley/reusableBehaviors'">
 
 	<rc-shelf name="checkbox">
 		<shelf-title>Checkbox</shelf-title>
@@ -25,7 +25,7 @@
 				>
 					<i class="fa fa-check" ng-show="checkbox.active"></i>
 				</div><br>
-				<label class="checkbox-label">Checkbox with Icon</div>
+				<label class="checkbox-label">Checkbox with Icon</label>
 			</rc-shelf-drawer>
 			<rc-shelf-drawer>
 				<div class="checkbox"
@@ -43,14 +43,93 @@
 		</shelf-content>
 		<rc-code-viewer name="checkbox">
 			<js-code>
-	console.log('test');
+	rb.directive('rbToggle', rbToggle);
+
+	function rbToggle() {
+		return {
+			restrict: 'A',
+			scope: {
+				toggleApi: '='
+			},
+			link: function(scope, elem, attr){
+				scope.toggleApi = {
+					active: false,
+					toggle: toggle
+				};
+
+				function toggle(){
+					scope.toggleApi.active = attr.disabled === 'true' ? scope.toggleApi.active : !scope.toggleApi.active;
+				}
+			}
+		}
+	}
 			</js-code>
 			<html-code>
-	&lt;div class="test"&gt;Test&lt;/div&gt;
+	&lt;div class="checkbox"
+		rb-toggle
+		toggle-api="checkbox"
+		ng-class="{
+			on: checkbox.active
+		}"
+		ng-click="checkbox.toggle()"
+	&gt;
+	&lt;/div&gt;&lt;br&gt;
+	&lt;label class="checkbox-label"&gt;Checkbox&lt;/label&gt;
+
+	&lt;div class="checkbox"
+		rb-toggle
+		toggle-api="checkbox"
+		ng-click="checkbox.toggle()"
+	&gt;
+		&lt;i class="fa fa-check" ng-show="checkbox.active"&gt;&lt;/i&gt;
+	&lt;/div&gt;&lt;br&gt;
+	&lt;label class="checkbox-label"&gt;Checkbox with Icon&lt;/label&gt;
+
+	&lt;div class="checkbox"
+		rb-toggle
+		toggle-api="checkbox"
+		ng-class="{
+			on: checkbox.active
+		}"
+		ng-click="checkbox.toggle()"
+		disabled="true"
+	&gt;
+	&lt;/div&gt;&lt;br&gt;
+	&lt;label class="checkbox-label" disabled="true"&gt;Disabled Checkbox&lt;/label&gt;
 			</html-code>
 			<css-code>
-	.test {
-		background-color: blue;
+	.checkbox {
+		position: relative;
+		border: 1px solid #777777;
+		border-radius: 5px;
+		height: 25px;
+		width: 25px;
+		cursor: pointer;
+		display: inline-block;
+		color: #777777;
+	}
+
+	.checkbox-label {
+		color: #777777;
+	}
+
+	.checkbox.on {
+		background-color: #195793;
+	}
+
+	.checkbox > i {
+		position: absolute;
+		font-size: 2.2em;
+		margin-top: -0.3em;
+		margin-left: -0.3em;
+	}
+
+	.checkbox[disabled] {
+		border: 1px solid #AAAAAA;
+	}
+
+	.checkbox-label[disabled] {
+		color: #AAAAAA;
 	}
 			</css-code>
 		</rc-code-viewer>
@@ -172,28 +251,28 @@
 		</shelf-content>
 		<rc-code-viewer name="switch">
 			<js-code>
-			angular
-				.module('reusableBehaviors')
-				.directive('rbToggle', rbToggle);
+	angular
+		.module('reusableBehaviors')
+		.directive('rbToggle', rbToggle);
 
-			function rbToggle(){
-				return {
-					restrict: 'A',
-					scope: {
-						toggleApi: '='
-					},
-					link: function(scope, elem, attr){
-						scope.toggleApi = {
-							active: false,
-							toggle: toggle
-						};
+	function rbToggle(){
+		return {
+			restrict: 'A',
+			scope: {
+				toggleApi: '='
+			},
+			link: function(scope, elem, attr){
+				scope.toggleApi = {
+					active: false,
+					toggle: toggle
+				};
 
-						function toggle(){
-							scope.toggleApi.active = !scope.toggleApi.active;
-						}
-					}
+				function toggle(){
+					scope.toggleApi.active = !scope.toggleApi.active;
 				}
 			}
+		}
+	}
 			</js-code>
 			<html-code>
 			Switch
