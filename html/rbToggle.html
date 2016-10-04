@@ -4,15 +4,28 @@
 		<shelf-title>Checkbox</shelf-title>
 		<shelf-content>
 			<rc-shelf-drawer>
+				<div>
+					<div class="checkbox"
+						rb-toggle
+						toggle-api="checkbox"
+						ng-class="{
+							on: checkbox.active
+						}"
+						ng-click="checkbox.toggle()"
+					>
+					</div><br>
+					<label class="checkbox-label">Checkbox</label>
+				</div>
+			</rc-shelf-drawer>
+			<rc-shelf-drawer>
 				<div class="checkbox"
 					rb-toggle
 					toggle-api="checkbox"
-					ng-class="{
-						on: checkbox.active
-					}"
 					ng-click="checkbox.toggle()"
 				>
-				</div>
+					<i class="fa fa-check" ng-show="checkbox.active"></i>
+				</div><br>
+				<label class="checkbox-label">Checkbox with Icon</div>
 			</rc-shelf-drawer>
 			<rc-shelf-drawer>
 				<div class="checkbox"
@@ -22,19 +35,10 @@
 						on: checkbox.active
 					}"
 					ng-click="checkbox.toggle()"
+					disabled="true"
 				>
-				</div>
-			</rc-shelf-drawer>
-			<rc-shelf-drawer>
-				<div class="checkbox"
-					rb-toggle
-					toggle-api="checkbox"
-					ng-class="{
-						on: checkbox.active
-					}"
-					ng-click="checkbox.toggle()"
-				>
-				</div>
+				</div><br>
+				<label class="checkbox-label" disabled="true">Disabled Checkbox</label>
 			</rc-shelf-drawer>
 		</shelf-content>
 		<rc-code-viewer name="checkbox">
@@ -75,6 +79,31 @@
 				</div>
 			</rc-shelf-drawer>
 			<rc-shelf-drawer>
+				<div class="switch-container"
+					rb-toggle
+					toggle-api="switch"
+					ng-class="{
+						off: !switch.active,
+						on: switch.active
+					}"
+					ng-click="switch.toggle()"
+				>
+					<div class="switch-text"
+						ng-class="{
+							hidden: !switch.active,
+							shown: switch.active
+						}"
+					>ON</div>
+
+					<div class="slider"></div>
+
+					<div class="switch-text"
+						ng-class="{
+							hidden: switch.active,
+							shown: !switch.active
+						}"
+					>OFF</div>
+				</div>
 				<div class="switch-container"
 					rb-toggle
 					toggle-api="switch"

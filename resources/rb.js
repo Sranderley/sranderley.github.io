@@ -15,7 +15,7 @@ function rbToggle() {
 			};
 
 			function toggle(){
-				scope.toggleApi.active = !scope.toggleApi.active;
+				scope.toggleApi.active = attr.disabled === 'true' ? scope.toggleApi.active : !scope.toggleApi.active;
 			}
 		}
 	}
