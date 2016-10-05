@@ -151,13 +151,15 @@ function rcDemoCard () {
 		replace: true,
 		transclude: true,
 		scope: {
-			githubLink: '=',
+			wordpressLink: '@',
+			githubLink: '@',
 			cardTitle: '@'
 		},
 		template: function (tElem, tAttr) {
 			return `<div class="demo-card">
 				<div class="demo-banner">
 					<label class="title">` + tAttr.cardTitle + `</label>
+					<a href="` + tAttr.wordpressLink + `" class="demo-card-link"><i class="link-icon fa fa-wordpress"></i></a>
 					<a href="` + tAttr.githubLink + `" class="demo-card-link"><i class="link-icon fa fa-github"></i></a>
 				</div>
 				<div class="demo-card-content" ng-transclude></div>
