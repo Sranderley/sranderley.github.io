@@ -394,15 +394,11 @@ a > .link-icon {
 
 .slider {
 	background-color: white;
-	border: 1px solid #777777;
+	border: inherit;
 	border-radius: 2px;
 	height: 23px;
 	width: 20%;
 	float: left;
-}
-
-.switch-label {
-	color: #888888;
 }
 
 .checkbox {

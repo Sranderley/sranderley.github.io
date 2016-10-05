@@ -43,9 +43,11 @@
 		</shelf-content>
 		<rc-code-viewer name="checkbox">
 			<js-code>
-	rb.directive('rbToggle', rbToggle);
+	angular
+		.module('reusableBehaviors')
+		.directive('rbToggle', rbToggle);
 
-	function rbToggle() {
+	function rbToggle(){
 		return {
 			restrict: 'A',
 			scope: {
@@ -65,37 +67,41 @@
 	}
 			</js-code>
 			<html-code>
-	&lt;div class="checkbox"
+	&lt;div
+		class="checkbox"
 		rb-toggle
 		toggle-api="checkbox"
 		ng-class="{
 			on: checkbox.active
 		}"
-		ng-click="checkbox.toggle()"
-	&gt;
+		ng-click="checkbox.toggle()"&gt;
 	&lt;/div&gt;&lt;br&gt;
 	&lt;label class="checkbox-label"&gt;Checkbox&lt;/label&gt;
 
-	&lt;div class="checkbox"
+	&lt;div
+		class="checkbox"
 		rb-toggle
 		toggle-api="checkbox"
-		ng-click="checkbox.toggle()"
-	&gt;
+		ng-click="checkbox.toggle()"&gt;
 		&lt;i class="fa fa-check" ng-show="checkbox.active"&gt;&lt;/i&gt;
 	&lt;/div&gt;&lt;br&gt;
 	&lt;label class="checkbox-label"&gt;Checkbox with Icon&lt;/label&gt;
 
-	&lt;div class="checkbox"
+	&lt;div
+		class="checkbox"
 		rb-toggle
 		toggle-api="checkbox"
 		ng-class="{
 			on: checkbox.active
 		}"
 		ng-click="checkbox.toggle()"
-		disabled="true"
-	&gt;
+		disabled="true"&gt;
 	&lt;/div&gt;&lt;br&gt;
-	&lt;label class="checkbox-label" disabled="true"&gt;Disabled Checkbox&lt;/label&gt;
+	&lt;label
+		class="checkbox-label"
+		disabled="true"&gt;
+		Disabled Checkbox
+	&lt;/label&gt;
 			</html-code>
 			<css-code>
 	.checkbox {
@@ -268,90 +274,199 @@
 				};
 
 				function toggle(){
-					scope.toggleApi.active = !scope.toggleApi.active;
+					scope.toggleApi.active = attr.disabled === 'true' ? scope.toggleApi.active : !scope.toggleApi.active;
 				}
 			}
 		}
 	}
 			</js-code>
 			<html-code>
-			Switch
-			&lt;div class="switch-container"
-				rb-toggle
-				toggle-api="switch"
-				ng-class="{
-					off: !switch.active,
-					on: switch.active
-				}"
-				ng-click="switch.toggle()"
-			&gt;
-				&lt;div class="switch-text"
-					ng-class="{
-						hidden: !switch.active,
-						shown: switch.active
-					}"
-				&gt;ON&lt;/div&gt;
-				&lt;div class="slider"&gt;&lt;/div&gt;
-				&lt;div class="switch-text"
-					ng-class="{
-						hidden: switch.active,
-						shown: !switch.active
-					}"
-				&gt;OFF&lt;/div&gt;
-			&lt;/div&gt;
+	&lt;div
+		class="switch-container"
+		rb-toggle
+		toggle-api="switch"
+		ng-class="{
+			off: !switch.active,
+			on: switch.active
+		}"
+		ng-click="switch.toggle()"&gt;
+		&lt;div
+			class="switch-text"
+			ng-class="{
+				hidden: !switch.active,
+				shown: switch.active
+			}"&gt;
+			ON
+		&lt;/div&gt;
+		&lt;div class="slider"&gt;&lt;/div&gt;
+		&lt;div
+			class="switch-text"
+			ng-class="{
+				hidden: switch.active,
+				shown: !switch.active
+			}"&gt;
+			OFF
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;div
+		class="switch-container"
+		rb-toggle
+		toggle-api="switch"
+		ng-class="{
+			off: !switch.active,
+			on: switch.active
+		}"
+		ng-click="switch.toggle()"&gt;
+		&lt;div
+			class="switch-text"
+			ng-class="{
+				hidden: !switch.active,
+				shown: switch.active
+			}"&gt;
+			ON
+		&lt;/div&gt;
+
+		&lt;div class="slider"&gt;&lt;/div&gt;
+
+		&lt;div
+			class="switch-text"
+			ng-class="{
+				hidden: switch.active,
+				shown: !switch.active
+			}"&gt;
+			OFF
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div
+		class="switch-container"
+		rb-toggle
+		toggle-api="switch"
+		ng-class="{
+			off: !switch.active,
+			on: switch.active
+		}"
+		ng-click="switch.toggle()"&gt;
+		&lt;div
+			class="switch-text"
+			ng-class="{
+				hidden: !switch.active,
+				shown: switch.active
+			}"&gt;
+			ON
+		&lt;/div&gt;
+
+		&lt;div class="slider"&gt;&lt;/div&gt;
+
+		&lt;div
+			class="switch-text"
+			ng-class="{
+				hidden: switch.active,
+				shown: !switch.active
+			}"&gt;
+			OFF
+		&lt;/div&gt;
+	&lt;/div&gt;&lt;br&gt;
+	&lt;label class="switch-label"&gt;Linked Switches&lt;/label&gt;
+
+	&lt;div
+		class="switch-container"
+		rb-toggle
+		toggle-api="switch"
+		ng-class="{
+			off: !switch.active,
+			on: switch.active
+		}"
+		ng-click="switch.toggle()"
+		disabled="true"&gt;
+		&lt;div
+			class="switch-text"
+			ng-class="{
+				hidden: !switch.active,
+				shown: switch.active
+			}"&gt;
+			ON
+		&lt;/div&gt;
+
+		&lt;div class="slider"&gt;&lt;/div&gt;
+
+		&lt;div
+			class="switch-text"
+			ng-class="{
+				hidden: switch.active,
+				shown: !switch.active
+			}"&gt;
+			OFF
+		&lt;/div&gt;
+	&lt;/div&gt;&lt;br&gt;
+	&lt;label class="switch-label" disabled="true"&gt;Disabled Switch&lt;/label&gt;
 			</html-code>
 			<css-code>
-			.switch-container {
-				transition: background-color 0.1s;
-				border: 1px solid #999999;
-				border-radius: 5px;
-				width: 50px;
-				height: 25px;
-				cursor: pointer;
-				overflow: hidden;
-			}
+	.switch-container {
+		transition: background-color 0.1s;
+		border: 1px solid #777777;
+		border-radius: 5px;
+		width: 50px;
+		height: 25px;
+		cursor: pointer;
+		overflow: hidden;
+		display: inline-block;
+	}
 
-			.switch-container.off{
-				background-color: #bbbbbb;
-			}
+	.switch-container.off{
+		background-color: #AAAAAA;
+	}
 
-			.switch-container.on{
-				background-color: blue;
-			}
+	.switch-container.on{
+		background-color: #195793;
+	}
 
-			.switch-text {
-				background-color: inherit;
-				color: white;
-				text-align: center;
-				transition: width 0.1s;
-				font-weight: bold;
-				line-height: 25px;
-				overflow: hidden;
-				float: left;
-				-webkit-touch-callout: none; /* iOS Safari */
-				-webkit-user-select: none;   /* Chrome/Safari/Opera */
-				-khtml-user-select: none;    /* Konqueror */
-				-moz-user-select: none;      /* Firefox */
-				-ms-user-select: none;       /* Internet Explorer/Edge */
-				user-select: none;
-			}
+	.switch-container[disabled] {
+		background-color: #CCCCCC;
+		border: 1px solid #AAAAAA;
+	}
 
-			.switch-text.hidden {
-				width: 0;
-			}
+	.switch-label {
+		color: #777777;
+	}
 
-			.switch-text.shown {
-				width: 80%;
-			}
+	.switch-label[disabled] {
+		color: #AAAAAA;
+	}
 
-			.slider {
-				background-color: white;
-				border: 1px solid #999999;
-				border-radius: 2px;
-				height: 23px;
-				width: 20%;
-				float: left;
-			}
+	.switch-text {
+		background-color: inherit;
+		color: white;
+		text-align: center;
+		transition: width 0.1s;
+		font-weight: bold;
+		line-height: 25px;
+		overflow: hidden;
+		float: left;
+		-webkit-touch-callout: none; /* iOS Safari */
+		-webkit-user-select: none;   /* Chrome/Safari/Opera */
+		-khtml-user-select: none;    /* Konqueror */
+		-moz-user-select: none;      /* Firefox */
+		-ms-user-select: none;       /* Internet Explorer/Edge */
+		user-select: none;
+	}
+
+	.switch-text.hidden {
+		width: 0;
+	}
+
+	.switch-text.shown {
+		width: 80%;
+	}
+
+	.slider {
+		background-color: white;
+		border: inherit;
+		border-radius: 2px;
+		height: 23px;
+		width: 20%;
+		float: left;
+	}
 			</css-code>
 		</rc-code-viewer>
 	</rc-shelf>
@@ -375,7 +490,7 @@
 					}"
 				>
 					<span>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 					</span>
 				</div>
 			</rc-shelf-drawer>
@@ -397,12 +512,109 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 					</span>
 				</div>
 			</rc-shelf-drawer>
-			<div style="clear: both;"></div>
 		</shelf-content>
 		<rc-code-viewer name="layout">
-			<js-code>console.log('test');</js-code>
-			<html-code>&lt;div class="test"&gt;Test&lt;/div&gt;</html-code>
-			<css-code>.test { background-color: blue; }</css-code>
+			<js-code>
+	angular
+		.module('reusableBehaviors')
+		.directive('rbToggle', rbToggle);
+
+	function rbToggle(){
+		return {
+			restrict: 'A',
+			scope: {
+				toggleApi: '='
+			},
+			link: function(scope, elem, attr){
+				scope.toggleApi = {
+					active: false,
+					toggle: toggle
+				};
+
+				function toggle(){
+					scope.toggleApi.active = attr.disabled === 'true' ? scope.toggleApi.active : !scope.toggleApi.active;
+				}
+			}
+		}
+	}
+			</js-code>
+			<html-code>
+	&lt;div
+		class="align-btn"
+		rb-toggle
+		toggle-api="layout"
+		ng-click="layout.toggle()"&gt;
+		&lt;i class="fa fa-align-left" ng-show="layout.active"&gt;&lt;/i&gt;
+		&lt;i class="fa fa-align-right" ng-show="!layout.active"&gt;&lt;/i&gt;
+	&lt;/div&gt;
+	&lt;div
+		class="layout-viewer"
+		ng-class="{
+			left: !layout.active,
+			right: layout.active
+		}"&gt;
+		&lt;span&gt;
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+		&lt;/span&gt;
+	&lt;/div&gt;
+
+	&lt;div
+		class="align-btn"
+		rb-toggle
+		toggle-api="columns"
+		ng-click="columns.toggle()"&gt;
+		&lt;i class="fa fa-columns"&gt;&lt;/i&gt;
+	&lt;/div&gt;
+	&lt;div
+		class="layout-viewer"
+		ng-class="{
+			cols: columns.active
+		}"&gt;
+		&lt;span&gt;
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+		&lt;/span&gt;
+	&lt;/div&gt;
+			</html-code>
+			<css-code>
+
+	.align-btn {
+		display: inline-block;
+		height: 4vh;
+		width: 60px;
+		background-color: #AAAAAA;
+		color: white;
+		border-radius: 5px;
+		font-size: 1.5em;
+		line-height: 4vh;
+		cursor: pointer;
+	}
+
+	.align-btn:hover {
+		background-color: #999999;
+	}
+
+	.layout-viewer {
+		margin-top: 1vh;
+		border: 1px solid #CCCCCC;
+		width: 100%;
+		padding: 20px 10px;
+		background-color: white;
+	}
+
+	.layout-viewer.left {
+		text-align: left;
+	}
+
+	.layout-viewer.right {
+		text-align: right;
+	}
+
+	.layout-viewer.cols {
+		-moz-column-count: 2;
+		-webkit-column-count: 2;
+		column-count: 2;
+	}
+			</css-code>
 		</rc-code-viewer>
 	</rc-shelf>
 </rc-demo-card>
