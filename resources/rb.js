@@ -80,16 +80,19 @@ function rbRelay(rbRelayService){
 
 			scope.group = attr.group;
 
-			if (!scope.first) scope.first = false;
+			if ( !scope.first ) scope.first = false;
 
-			scope.id = s.register(attr.group, attr.first);
+			scope.id = s.register( attr.group, attr.first );
 
 			function isActive(){
 				return s.active[scope.group] === scope.id ? true : false;
 			}
 
 			function toggle(){
-				s.toggle(scope.group, scope.id);
+				if ( ! attr.disabled ) {
+					var val = isActive() ? false : scope.id;
+					s.toggle(scope.group, val);
+				}
 			}
 
 			function reset(){
