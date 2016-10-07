@@ -36,41 +36,131 @@
 						on: radioThree.isActive()
 					}"
 					ng-click="radioThree.toggle()">
+				</div><br>
+				<label class="btn-label">Radio Buttons</label>
+			</rc-shelf-drawer>
+			<rc-shelf-drawer>
+				<div
+					class="radio-btn"
+					rb-relay
+					relay-api="radioOne"
+					group="one"
+					ng-class="{
+						on: radioOne.isActive()
+					}"
+					ng-click="radioOne.toggle()">
 				</div>
-			</rc-shelf-drawer>
-			<rc-shelf-drawer>
-
-			</rc-shelf-drawer>
-			<rc-shelf-drawer>
-
+				<div
+					class="radio-btn"
+					rb-relay
+					relay-api="radioTwo"
+					group="one"
+					ng-class="{
+						on: radioTwo.isActive()
+					}"
+					ng-click="radioTwo.toggle()">
+				</div>
+				<div
+					class="radio-btn"
+					rb-relay
+					relay-api="radioThree"
+					group="one"
+					ng-class="{
+						on: radioThree.isActive()
+					}"
+					ng-click="radioThree.toggle()"
+					disabled="true">
+				</div><br>
+				<label class="btn-label">Disabled Radio Button</label>
 			</rc-shelf-drawer>
 		</shelf-content>
 		<rc-code-viewer
 			name="test"
 		>
 			<js-code>
-			angular
-				.module('reusableBehaviors')
-				.directive('rbToggle', rbToggle);
+	angular
+		.module('reusableBehaviors')
+		.factory('rbRelayService', rbRelayService);
 
-			function rbToggle(){
-				return {
-					restrict: 'A',
-					scope: {
-						toggleApi: '='
-					},
-					link: function(scope, elem, attr){
-						scope.toggleApi = {
-							active: false,
-							toggle: toggle
-						};
+	function rbRelayService(){
+		var groups = {};
 
-						function toggle(){
-							scope.toggleApi.active = !scope.toggleApi.active;
-						}
+		var s = {
+			register: register,
+			toggle: toggle,
+			reset: reset,
+			active: {}
+		};
+
+		return s;
+
+		function register(index, isFirst){
+			if(!groups[index]) groups[index] = 0;
+			if(! (s.active[index] >= 0) ) s.active[index] = -1;
+
+			var id = groups[index]++;
+
+			if(isFirst){
+				s.active[index] = id;
+			}
+
+			return id;
+		}
+
+		function toggle(index, id){
+			s.active[index] = id;
+		}
+
+		function reset(index){
+			s.active[index] = -1;
+		}
+	}
+
+	angular
+		.module('reusableBehaviors')
+		.directive('rbRelay', rbRelay);
+
+		rbRelay.$inject = ['rbRelayService'];
+
+	function rbRelay(rbRelayService){
+		var s = rbRelayService;
+		return {
+			restrict: 'A',
+			scope: {
+				relayApi: '=',
+				group: '=',
+				first: '=?'
+			},
+			link: function(scope, elem, attr){
+				scope.relayApi = {
+					isActive: isActive,
+					toggle: toggle,
+					reset: reset
+				};
+
+				scope.group = attr.group;
+
+				if ( !scope.first ) scope.first = false;
+
+				scope.id = s.register( attr.group, attr.first );
+
+				function isActive(){
+					return s.active[scope.group] === scope.id ? true : false;
+				}
+
+				function toggle(){
+					if ( ! attr.disabled ) {
+						var val = isActive() ? false : scope.id;
+						s.toggle(scope.group, val);
 					}
 				}
+
+				function reset(){
+					s.reset(scope.group);
+				}
 			}
+		}
+	}
 			</js-code>
 			<html-code>
 			Switch
@@ -151,6 +241,84 @@
 				float: left;
 			}
 			</css-code>
+		</rc-code-viewer>
+	</rc-shelf>
+
+	<rc-shelf name="styling">
+		<shelf-title>Button Styling</shelf-title>
+		<shelf-content>
+			<rc-shelf-drawer>
+				<div
+					class="btn"
+					rb-relay
+					relay-api="btnOne"
+					group="one"
+					ng-class="{
+						on: btnOne.isActive()
+					}"
+					ng-click="btnOne.toggle()">
+				</div>
+				<div
+					class="btn"
+					rb-relay
+					relay-api="btnTwo"
+					group="one"
+					ng-class="{
+						on: btnTwo.isActive()
+					}"
+					ng-click="btnTwo.toggle()">
+				</div>
+				<div
+					class="btn"
+					rb-relay
+					relay-api="btnThree"
+					group="one"
+					ng-class="{
+						on: btnThree.isActive()
+					}"
+					ng-click="btnThree.toggle()">
+				</div><br>
+				<label class="btn-label">Styled Buttons</label>
+			</rc-shelf-drawer>
+			<rc-shelf-drawer>
+				<div
+					class="btn"
+					rb-relay
+					relay-api="btnOne"
+					group="one"
+					ng-class="{
+						on: btnOne.isActive()
+					}"
+					ng-click="btnOne.toggle()">
+				</div>
+				<div
+					class="btn"
+					rb-relay
+					relay-api="btnTwo"
+					group="one"
+					ng-class="{
+						on: btnTwo.isActive()
+					}"
+					ng-click="btnTwo.toggle()">
+				</div>
+				<div
+					class="btn"
+					rb-relay
+					relay-api="btnThree"
+					group="one"
+					ng-class="{
+						on: btnThree.isActive()
+					}"
+					ng-click="btnThree.toggle()"
+					disabled="true">
+				</div><br>
+				<label class="btn-label">Disabled Button</label>
+			</rc-shelf-drawer>
+		</shelf-content>
+		<rc-code-viewer>
+			<js-code></js-code>
+			<html-code></html-code>
+			<css-code></css-code>
 		</rc-code-viewer>
 	</rc-shelf>
 </rc-demo-card>

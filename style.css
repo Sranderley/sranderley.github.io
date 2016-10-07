@@ -480,6 +480,12 @@ a > .link-icon {
 	height: 25px;
 	width: 25px;
 	cursor: pointer;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none;   /* Chrome/Safari/Opera */
+	-khtml-user-select: none;    /* Konqueror */
+	-moz-user-select: none;      /* Firefox */
+	-ms-user-select: none;       /* Internet Explorer/Edge */
+	user-select: none;
 }
 
 .radio-btn.on {
@@ -487,5 +493,43 @@ a > .link-icon {
 }
 
 .btn-label {
+	color: #777777;
+}
 
+.radio-btn[disabled] {
+	border: 1px solid #AAAAAA;
+}
+
+.btn-label[disabled] {
+	color: #AAAAAA;
+}
+
+.btn {
+	margin-left: 1vw;
+	margin-right: 1vw;
+	display: inline-block;
+	border-radius: 5px;
+	background-color: #DDDDDD;
+	height: 4vh;
+	width: 4vw;
+	cursor: pointer;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none;   /* Chrome/Safari/Opera */
+	-khtml-user-select: none;    /* Konqueror */
+	-moz-user-select: none;      /* Firefox */
+	-ms-user-select: none;       /* Internet Explorer/Edge */
+	user-select: none;
+}
+
+.btn[disabled] {
+	background-color: #EEEEEE;
+	pointer-events: none;
+}
+
+.btn:hover {
+	background-color: #BBBBBB;
+}
+
+.btn.on {
+	box-shadow: 4px 4px 4px #AAAAAA;
 }
