@@ -44,7 +44,7 @@
 					class="radio-btn"
 					rb-relay
 					relay-api="radioOne"
-					group="one"
+					group="two"
 					ng-class="{
 						on: radioOne.isActive()
 					}"
@@ -54,7 +54,7 @@
 					class="radio-btn"
 					rb-relay
 					relay-api="radioTwo"
-					group="one"
+					group="two"
 					ng-class="{
 						on: radioTwo.isActive()
 					}"
@@ -64,7 +64,7 @@
 					class="radio-btn"
 					rb-relay
 					relay-api="radioThree"
-					group="one"
+					group="two"
 					ng-class="{
 						on: radioThree.isActive()
 					}"
@@ -75,8 +75,7 @@
 			</rc-shelf-drawer>
 		</shelf-content>
 		<rc-code-viewer
-			name="test"
-		>
+			name="radioButtons">
 			<js-code>
 	angular
 		.module('reusableBehaviors')
@@ -252,7 +251,7 @@
 					class="btn"
 					rb-relay
 					relay-api="btnOne"
-					group="one"
+					group="three"
 					ng-class="{
 						on: btnOne.isActive()
 					}"
@@ -262,7 +261,7 @@
 					class="btn"
 					rb-relay
 					relay-api="btnTwo"
-					group="one"
+					group="three"
 					ng-class="{
 						on: btnTwo.isActive()
 					}"
@@ -272,13 +271,14 @@
 					class="btn"
 					rb-relay
 					relay-api="btnThree"
-					group="one"
+					group="three"
 					ng-class="{
 						on: btnThree.isActive()
 					}"
-					ng-click="btnThree.toggle()">
+					ng-click="btnThree.toggle()"
+					disabled="true">
 				</div><br>
-				<label class="btn-label">Styled Buttons</label>
+				<label class="btn-label">Disabled Button</label>
 			</rc-shelf-drawer>
 			<rc-shelf-drawer>
 				<div
@@ -312,10 +312,74 @@
 					ng-click="btnThree.toggle()"
 					disabled="true">
 				</div><br>
-				<label class="btn-label">Disabled Button</label>
+				<label class="btn-label">Linked Buttons (with first radio button example)</label>
 			</rc-shelf-drawer>
 		</shelf-content>
-		<rc-code-viewer>
+		<rc-code-viewer
+			name="buttons">
+			<js-code></js-code>
+			<html-code></html-code>
+			<css-code></css-code>
+		</rc-code-viewer>
+	</rc-shelf>
+
+	<rc-shelf name="layout">
+		<shelf-title>Layout</shelf-title>
+		<shelf-content>
+			<rc-shelf-drawer>
+				<div
+					class="btn"
+					rb-relay
+					relay-api="btnOne"
+					group="four"
+					ng-class="{
+						on: btnOne.isActive()
+					}"
+					ng-click="btnOne.toggle()">
+					<i class="fa fa-align-left"></i>
+				</div>
+				<div
+					class="btn"
+					rb-relay
+					relay-api="btnTwo"
+					group="four"
+					default="true"
+					ng-class="{
+						on: btnTwo.isActive()
+					}"
+					ng-click="btnTwo.toggle()">
+					<i class="fa fa-align-center"></i>
+				</div>
+				<div
+					class="btn"
+					rb-relay
+					relay-api="btnThree"
+					group="four"
+					ng-class="{
+						on: btnThree.isActive()
+					}"
+					ng-click="btnThree.toggle()">
+					<i class="fa fa-align-right"></i>
+				</div>
+				<div class="layout-viewer"
+					ng-class="{
+						left: btnOne.isActive(),
+						center: btnTwo.isActive(),
+						right: btnThree.isActive()
+					}"
+				>
+					<span>
+ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae felis erat. Vivamus massa velit, ultricies id condimentum quis, egestas in nisi. Integer pellentesque rhoncus augue quis dignissim. Aliquam eu felis metus. Ut vehicula suscipit elit, a laoreet lorem venenatis at. Mauris accumsan, diam eu pulvinar tempus, justo orci cursus odio, ac vestibulum ante turpis in mauris. Pellentesque dui mi, dictum quis vehicula ac, porttitor a massa. Cras vitae imperdiet ligula. In hac habitasse platea dictumst. In egestas auctor risus pharetra efficitur.<br><br>
+
+Aliquam mi elit, malesuada sed libero et, laoreet pellentesque nibh. Vivamus ultricies nec turpis vel elementum. Nulla cursus malesuada massa sed consequat. Nam dapibus, sem mattis malesuada fermentum, velit arcu accumsan felis, eget dignissim arcu quam eget enim. Nam et odio lectus. Curabitur varius aliquam suscipit. Suspendisse euismod, est non tristique maximus, diam sem volutpat felis, a accumsan lorem nisl eget mi. Vivamus malesuada leo lorem, id vulputate arcu hendrerit vitae. Nulla a egestas nibh.<br><br>
+
+Nam id diam quis neque dignissim posuere. Phasellus tincidunt magna erat. Maecenas posuere tincidunt massa, quis pellentesque nunc aliquet facilisis. Proin fringilla vel massa eu faucibus. Cras auctor fermentum metus quis vehicula. Curabitur semper nulla sed aliquam elementum. Sed felis tortor, dapibus eget sapien sed, eleifend congue leo. Aenean facilisis gravida imperdiet. Curabitur pellentesque tellus sed lectus ornare, ac tempor felis pulvinar. Vestibulum tincidunt nulla nunc, vitae laoreet quam ultricies nec. Nunc eget lacinia arcu, sed auctor ex. Suspendisse iaculis, nisl quis interdum fermentum, sapien eros pharetra justo, quis facilisis lectus dui sit amet metus. Nunc faucibus, neque ut fringilla aliquet, ex dolor porttitor quam, sit amet scelerisque odio arcu ut justo.
+					</span>
+				</div>
+			</rc-shelf-drawer>
+		</shelf-content>
+		<rc-code-viewer
+			name="buttons">
 			<js-code></js-code>
 			<html-code></html-code>
 			<css-code></css-code>

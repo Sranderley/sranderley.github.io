@@ -25,6 +25,7 @@ rb.factory('rbRelayService', rbRelayService);
 
 function rbRelayService(){
 	var groups = {};
+	var defaults = {};
 
 	var s = {
 		register: register,
@@ -35,21 +36,21 @@ function rbRelayService(){
 
 	return s;
 
-	function register(index, isFirst){
-		if(!groups[index]) groups[index] = 0;
-		if(! (s.active[index] >= 0) ) s.active[index] = -1;
+	function register(index, isFirst, isDefault){
+		if( !groups[index] ) groups[index] = 0;
+		if( !defaults[index] ) defaults[index] = -1;
+		if( !( s.active[index] >= 0 ) ) s.active[index] = -1;
 
 		var id = groups[index]++;
 
-		if(isFirst){
-			s.active[index] = id;
-		}
+		if(isFirst || isDefault) s.active[index] = id;
+		if(isDefault) defaults[index] = id;
 
 		return id;
 	}
 
 	function toggle(index, id){
-		s.active[index] = id;
+		s.active[index] = s.active[index] === id ? defaults[index] : id;
 	}
 
 	function reset(index){
@@ -69,7 +70,8 @@ function rbRelay(rbRelayService){
 		scope: {
 			relayApi: '=',
 			group: '=',
-			first: '=?'
+			first: '=?',
+			default: '=?'
 		},
 		link: function(scope, elem, attr){
 			scope.relayApi = {
@@ -81,8 +83,9 @@ function rbRelay(rbRelayService){
 			scope.group = attr.group;
 
 			if ( !scope.first ) scope.first = false;
+			if ( !scope.default ) scope.default = false;
 
-			scope.id = s.register( attr.group, attr.first );
+			scope.id = s.register( attr.group, scope.first, scope.default );
 
 			function isActive(){
 				return s.active[scope.group] === scope.id ? true : false;
@@ -90,8 +93,7 @@ function rbRelay(rbRelayService){
 
 			function toggle(){
 				if ( ! attr.disabled ) {
-					var val = isActive() ? false : scope.id;
-					s.toggle(scope.group, val);
+					s.toggle(scope.group, scope.id);
 				}
 			}
 
