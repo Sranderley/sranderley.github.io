@@ -47,23 +47,24 @@
 		<rc-code-viewer name="checkbox">
 			<js-code>
 	angular
-		.module('reusableBehaviors')
-		.directive('rbToggle', rbToggle);
+		.module( 'reusableBehaviors' )
+		.directive( 'rbToggle', rbToggle );
 
-	function rbToggle(){
+	function rbToggle () {
 		return {
 			restrict: 'A',
 			scope: {
-				toggleApi: '='
+				toggleApi: '=',
+				disabled: '=?'
 			},
-			link: function(scope, elem, attr){
+			link: function( scope, elem, attr ){
 				scope.toggleApi = {
 					active: false,
 					toggle: toggle
 				};
 
-				function toggle(){
-					scope.toggleApi.active = attr.disabled === 'true' ? scope.toggleApi.active : !scope.toggleApi.active;
+				function toggle () {
+					scope.toggleApi.active = scope.disabled ? scope.toggleApi.active : !scope.toggleApi.active;
 				}
 			}
 		}
@@ -261,23 +262,24 @@
 		<rc-code-viewer name="switch">
 			<js-code>
 	angular
-		.module('reusableBehaviors')
-		.directive('rbToggle', rbToggle);
+		.module( 'reusableBehaviors' )
+		.directive( 'rbToggle', rbToggle );
 
-	function rbToggle(){
+	function rbToggle () {
 		return {
 			restrict: 'A',
 			scope: {
-				toggleApi: '='
+				toggleApi: '=',
+				disabled: '=?'
 			},
-			link: function(scope, elem, attr){
+			link: function( scope, elem, attr ){
 				scope.toggleApi = {
 					active: false,
 					toggle: toggle
 				};
 
-				function toggle(){
-					scope.toggleApi.active = attr.disabled === 'true' ? scope.toggleApi.active : !scope.toggleApi.active;
+				function toggle () {
+					scope.toggleApi.active = scope.disabled ? scope.toggleApi.active : !scope.toggleApi.active;
 				}
 			}
 		}
@@ -446,12 +448,6 @@
 		line-height: 25px;
 		overflow: hidden;
 		float: left;
-		-webkit-touch-callout: none; /* iOS Safari */
-		-webkit-user-select: none;   /* Chrome/Safari/Opera */
-		-khtml-user-select: none;    /* Konqueror */
-		-moz-user-select: none;      /* Firefox */
-		-ms-user-select: none;       /* Internet Explorer/Edge */
-		user-select: none;
 	}
 
 	.switch-text.hidden {
@@ -519,23 +515,24 @@
 		<rc-code-viewer name="layout">
 			<js-code>
 	angular
-		.module('reusableBehaviors')
-		.directive('rbToggle', rbToggle);
+		.module( 'reusableBehaviors' )
+		.directive( 'rbToggle', rbToggle );
 
-	function rbToggle(){
+	function rbToggle () {
 		return {
 			restrict: 'A',
 			scope: {
-				toggleApi: '='
+				toggleApi: '=',
+				disabled: '=?'
 			},
-			link: function(scope, elem, attr){
+			link: function( scope, elem, attr ){
 				scope.toggleApi = {
 					active: false,
 					toggle: toggle
 				};
 
-				function toggle(){
-					scope.toggleApi.active = attr.disabled === 'true' ? scope.toggleApi.active : !scope.toggleApi.active;
+				function toggle () {
+					scope.toggleApi.active = scope.disabled ? scope.toggleApi.active : !scope.toggleApi.active;
 				}
 			}
 		}

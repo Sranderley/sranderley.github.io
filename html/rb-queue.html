@@ -1,0 +1,54 @@
+<rc-demo-card
+	card-title="Using rb-queue"
+	github-link="github.com/sranderley/reusableBehaviors"
+	wordpress-link="bonsai-tree.us/rb-queue">
+
+	<rc-shelf name="pagination">
+		<shelf-title>Pagination</shelf-title>
+		<shelf-content>
+			<rc-shelf-drawer>
+				<div
+					class="btn"
+					rb-queue
+					queue-api="btnOne"
+					group="one"
+					position="0"
+					ng-class="{
+						on: btnOne.isActive()
+					}"
+					ng-click="btnOne.setActive()">
+					<i class="fa fa-align-left"></i>
+				</div>
+				<div
+					class="btn"
+					rb-queue
+					queue-api="btnTwo"
+					group="one"
+					position="1"
+					ng-class="{
+						on: btnTwo.isActive()
+					}"
+					ng-click="btnTwo.setActive()">
+					<i class="fa fa-align-center"></i>
+				</div>
+				<div
+					class="btn"
+					rb-relay
+					relay-api="btnThree"
+					group="four"
+					ng-class="{
+						on: btnThree.isActive()
+					}"
+					ng-click="btnThree.toggle()">
+					<i class="fa fa-align-right"></i>
+				</div>
+			</rc-shelf-drawer>
+		</shelf-content>
+		<rc-code-viewer
+			name="buttons">
+			<js-code></js-code>
+			<html-code></html-code>
+			<css-code></css-code>
+		</rc-code-viewer>
+	</rc-shelf>
+</rc-demo-card>

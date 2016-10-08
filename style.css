@@ -308,6 +308,7 @@ a > .link-icon {
 	line-height: 5vh;
 	font-size: 1.5em;
 	font-weight: lighter;
+	color: rgba(255,255,255,0.8);
 }
 
 .switch-container {

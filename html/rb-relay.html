@@ -1,7 +1,7 @@
 <rc-demo-card
 	card-title="Using rb-relay"
 	github-link="'sranderley.github.io'"
-	wordpress-link="bonsai-tree.us/rb-toggle">
+	wordpress-link="bonsai-tree.us/rb-relay">
 
 	<rc-shelf name="radios">
 		<shelf-title>Radio Buttons</shelf-title>
@@ -38,6 +38,41 @@
 					ng-click="radioThree.toggle()">
 				</div><br>
 				<label class="btn-label">Radio Buttons</label>
+			</rc-shelf-drawer>
+				<rc-shelf-drawer>
+				<div
+					class="radio-btn"
+					rb-relay
+					relay-api="radioOne"
+					group="two"
+					ng-class="{
+						on: radioOne.isActive()
+					}"
+					ng-click="radioOne.toggle()">
+				</div>
+				<div
+					class="radio-btn"
+					rb-relay
+					relay-api="radioTwo"
+					group="two"
+					first="true"
+					ng-class="{
+						on: radioTwo.isActive()
+					}"
+					ng-click="radioTwo.toggle()">
+				</div>
+				<div
+					class="radio-btn"
+					rb-relay
+					relay-api="radioThree"
+					group="two"
+					ng-class="{
+						on: radioThree.isActive()
+					}"
+					ng-click="radioThree.toggle()">
+				</div><br>
+				<label class="btn-label">Radio Buttons</label>
+				<label class="btn-label">(using 'first' attirbute)</label>
 			</rc-shelf-drawer>
 			<rc-shelf-drawer>
 				<div
