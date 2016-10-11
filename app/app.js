@@ -32,11 +32,6 @@ function config($stateProvider, $urlRouterProvider){
 	.state('demos.rb-queue', {
 		url: '/rb-queue',
 		templateUrl: 'html/rb-queue.html'
-	})
-
-	.state('demos.d3Swap', {
-		url: '/d3Swap',
-		templateUrl: 'html/d3SwappingNodes.html'
 	});
 
 }

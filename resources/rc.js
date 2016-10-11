@@ -38,7 +38,7 @@ function rcCodeViewer() {
 			<div rb-relay
 				relay-api="` + tAttr.name + `Js"
 				group="` + tAttr.name + `"
-				first="true"
+				default="true"
 				class="code-box"
 				ng-class="{
 					collapsed: !` + tAttr.name + `Js.isActive(),

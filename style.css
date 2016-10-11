@@ -80,7 +80,7 @@ pre {
 	display: block;
 }
 
-.nav-item > *:hover {
+.nav-item > a:hover {
 	background-color: #42586E;
 }
 
@@ -195,6 +195,22 @@ a > .link-icon {
 	background-color: white;
 	overflow: auto;
 	padding-bottom: 3vh;
+}
+
+.demo-card-page {
+	padding-top: 2vh;
+	padding-left: 2vw;
+	padding-right: 2vw;
+	color: #333;
+}
+
+.demo-card-heading {
+	font-size: 1.5em;
+}
+
+.demo-card-text {
+	font-size: 1.2em;
+	line-height: 1.5;
 }
 
 .shelf {
@@ -405,22 +421,6 @@ a > .link-icon {
 	color: #AAAAAA;
 }
 
-.align-btn {
-	display: inline-block;
-	height: 4vh;
-	width: 60px;
-	background-color: #AAAAAA;
-	color: white;
-	border-radius: 5px;
-	font-size: 1.5em;
-	line-height: 4vh;
-	cursor: pointer;
-}
-
-.align-btn:hover {
-	background-color: #999999;
-}
-
 .layout-viewer {
 	margin-top: 1vh;
 	border: 1px solid #CCCCCC;
@@ -480,7 +480,7 @@ a > .link-icon {
 	margin-right: 1vw;
 	display: inline-block;
 	border-radius: 5px;
-	background-color: #DDDDDD;
+	background-color: #BBBBBB;
 	height: 4vh;
 	width: 3vw;
 	cursor: pointer;
@@ -492,7 +492,7 @@ a > .link-icon {
 }
 
 .btn:hover {
-	background-color: #BBBBBB;
+	background-color: #999999;
 }
 
 .btn.on {

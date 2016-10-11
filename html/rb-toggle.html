@@ -474,7 +474,7 @@
 		<shelf-title>Layout</shelf-title>
 		<shelf-content>
 			<rc-shelf-drawer>
-				<div class="align-btn"
+				<div class="btn"
 					rb-toggle
 					toggle-api="layout"
 					ng-click="layout.toggle()"
@@ -494,7 +494,7 @@
 				</div>
 			</rc-shelf-drawer>
 			<rc-shelf-drawer>
-				<div class="align-btn"
+				<div class="btn"
 					rb-toggle
 					toggle-api="columns"
 					ng-click="columns.toggle()"
@@ -576,21 +576,22 @@
 	&lt;/div&gt;
 			</html-code>
 			<css-code>
-
-	.align-btn {
-		display: inline-block;
-		height: 4vh;
-		width: 60px;
-		background-color: #AAAAAA;
-		color: white;
-		border-radius: 5px;
+	.btn {
 		font-size: 1.5em;
 		line-height: 4vh;
+		color: white;
+		margin-left: 1vw;
+		margin-right: 1vw;
+		display: inline-block;
+		border-radius: 5px;
+		background-color: #DDDDDD;
+		height: 4vh;
+		width: 3vw;
 		cursor: pointer;
 	}
 
-	.align-btn:hover {
-		background-color: #999999;
+	.btn:hover {
+		background-color: #BBBBBB;
 	}
 
 	.layout-viewer {

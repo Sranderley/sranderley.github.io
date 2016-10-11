@@ -74,8 +74,8 @@ function rbRelay( rbRelayService ){
 		scope: {
 			relayApi: '=',
 			group: '@',
-			first: '@?',
-			default: '@?',
+			first: '=?',
+			default: '=?',
 			disabled: '=?'
 		},
 		link: function( scope, elem, attr ){

@@ -1,6 +1,6 @@
 <rc-demo-card
 	card-title="Using rb-relay"
-	github-link="'sranderley.github.io'"
+	github-link="github.com/sranderley/reusableBehaviors"
 	wordpress-link="bonsai-tree.us/rb-relay">
 
 	<rc-shelf name="radios">
@@ -39,7 +39,7 @@
 				</div><br>
 				<label class="btn-label">Radio Buttons</label>
 			</rc-shelf-drawer>
-				<rc-shelf-drawer>
+			<rc-shelf-drawer>
 				<div
 					class="radio-btn"
 					rb-relay
@@ -71,7 +71,7 @@
 					}"
 					ng-click="radioThree.toggle()">
 				</div><br>
-				<label class="btn-label">Radio Buttons</label>
+				<label class="btn-label">Radio Buttons</label><br>
 				<label class="btn-label">(using 'first' attirbute)</label>
 			</rc-shelf-drawer>
 			<rc-shelf-drawer>
@@ -113,167 +113,198 @@
 			name="radioButtons">
 			<js-code>
 	angular
-		.module('reusableBehaviors')
-		.factory('rbRelayService', rbRelayService);
+		.module( 'reusableBehaviors' )
+		.factory( 'rbRelayService', rbRelayService );
 
-	function rbRelayService(){
-		var groups = {};
+	function rbRelayService () {
 
 		var s = {
 			register: register,
 			toggle: toggle,
-			reset: reset,
-			active: {}
+			groups: {}
 		};
 
 		return s;
 
-		function register(index, isFirst){
-			if(!groups[index]) groups[index] = 0;
-			if(! (s.active[index] >= 0) ) s.active[index] = -1;
+		function register ( index, isFirst, isDefault ) {
+			if ( !s.groups[ index ] ) s.groups[ index ] = {
+				id: 0,
+				default: -1,
+				active: -1
+			};
 
-			var id = groups[index]++;
+			var id = s.groups[ index ].id++;
 
-			if(isFirst){
-				s.active[index] = id;
-			}
+			if ( isFirst || isDefault ) s.groups[ index ].active = id;
+			if ( isDefault ) s.groups[ index ].default = id;
 
 			return id;
 		}
 
-		function toggle(index, id){
-			s.active[index] = id;
-		}
+		function toggle ( index, id ) {
+			var group = s.groups[ index ];
 
-		function reset(index){
-			s.active[index] = -1;
+			group.active = group.active === id ? group.default : id;
 		}
 	}
 
 	angular
-		.module('reusableBehaviors')
-		.directive('rbRelay', rbRelay);
+		.module( 'reusableBehaviors' )
+		.directive( 'rbRelay', rbRelay );
 
-		rbRelay.$inject = ['rbRelayService'];
+	rbRelay.$inject = [ 'rbRelayService' ];
 
-	function rbRelay(rbRelayService){
+	function rbRelay( rbRelayService ){
 		var s = rbRelayService;
 		return {
 			restrict: 'A',
 			scope: {
 				relayApi: '=',
-				group: '=',
-				first: '=?'
+				group: '@',
+				first: '=?',
+				default: '=?',
+				disabled: '=?'
 			},
-			link: function(scope, elem, attr){
+			link: function( scope, elem, attr ){
 				scope.relayApi = {
 					isActive: isActive,
-					toggle: toggle,
-					reset: reset
+					toggle: toggle
 				};
 
-				scope.group = attr.group;
+				scope.id = s.register( scope.group, scope.first, scope.default );
 
-				if ( !scope.first ) scope.first = false;
-
-				scope.id = s.register( attr.group, attr.first );
-
-				function isActive(){
-					return s.active[scope.group] === scope.id ? true : false;
+				function isActive () {
+					return s.groups[ scope.group ].active === scope.id ? true : false;
 				}
 
-				function toggle(){
-					if ( ! attr.disabled ) {
-						var val = isActive() ? false : scope.id;
-						s.toggle(scope.group, val);
-					}
-				}
-
-				function reset(){
-					s.reset(scope.group);
+				function toggle () {
+					if ( ! attr.disabled ) s.toggle( scope.group, scope.id );
 				}
 			}
 		}
 	}
 			</js-code>
 			<html-code>
-			Switch
-			&lt;div class="switch-container"
-				rb-toggle
-				toggle-api="switch"
-				ng-class="{
-					off: !switch.active,
-					on: switch.active
-				}"
-				ng-click="switch.toggle()"
-			&gt;
-				&lt;div class="switch-text"
-					ng-class="{
-						hidden: !switch.active,
-						shown: switch.active
-					}"
-				&gt;ON&lt;/div&gt;
-				&lt;div class="slider"&gt;&lt;/div&gt;
-				&lt;div class="switch-text"
-					ng-class="{
-						hidden: switch.active,
-						shown: !switch.active
-					}"
-				&gt;OFF&lt;/div&gt;
-			&lt;/div&gt;
+	&lt;div
+		class="radio-btn"
+		rb-relay
+		relay-api="radioOne"
+		group="one"
+		ng-class="{
+			on: radioOne.isActive()
+		}"
+		ng-click="radioOne.toggle()"&gt;
+	&lt;/div&gt;
+	&lt;div
+		class="radio-btn"
+		rb-relay
+		relay-api="radioTwo"
+		group="one"
+		ng-class="{
+			on: radioTwo.isActive()
+		}"
+		ng-click="radioTwo.toggle()"&gt;
+	&lt;/div&gt;
+	&lt;div
+		class="radio-btn"
+		rb-relay
+		relay-api="radioThree"
+		group="one"
+		ng-class="{
+			on: radioThree.isActive()
+		}"
+		ng-click="radioThree.toggle()"&gt;
+	&lt;/div&gt;&lt;br&gt;
+	&lt;label class="btn-label"&gt;Radio Buttons&lt;/label&gt;
+
+	&lt;div
+		class="radio-btn"
+		rb-relay
+		relay-api="radioOne"
+		group="two"
+		ng-class="{
+			on: radioOne.isActive()
+		}"
+		ng-click="radioOne.toggle()"&gt;
+	&lt;/div&gt;
+	&lt;div
+		class="radio-btn"
+		rb-relay
+		relay-api="radioTwo"
+		group="two"
+		first="true"
+		ng-class="{
+			on: radioTwo.isActive()
+		}"
+		ng-click="radioTwo.toggle()"&gt;
+	&lt;/div&gt;
+	&lt;div
+		class="radio-btn"
+		rb-relay
+		relay-api="radioThree"
+		group="two"
+		ng-class="{
+			on: radioThree.isActive()
+		}"
+		ng-click="radioThree.toggle()"&gt;
+	&lt;/div&gt;&lt;br&gt;
+	&lt;label class="btn-label"&gt;Radio Buttons&lt;/label&gt;&lt;br&gt;
+	&lt;label class="btn-label"&gt;(using 'first' attirbute)&lt;/label&gt;
+
+	&lt;div
+		class="radio-btn"
+		rb-relay
+		relay-api="radioOne"
+		group="two"
+		ng-class="{
+			on: radioOne.isActive()
+		}"
+		ng-click="radioOne.toggle()"&gt;
+	&lt;/div&gt;
+	&lt;div
+		class="radio-btn"
+		rb-relay
+		relay-api="radioTwo"
+		group="two"
+		ng-class="{
+			on: radioTwo.isActive()
+		}"
+		ng-click="radioTwo.toggle()"&gt;
+	&lt;/div&gt;
+	&lt;div
+		class="radio-btn"
+		rb-relay
+		relay-api="radioThree"
+		group="two"
+		ng-class="{
+			on: radioThree.isActive()
+		}"
+		ng-click="radioThree.toggle()"
+		disabled="true"&gt;
+	&lt;/div&gt;&lt;br&gt;
+	&lt;label class="btn-label"&gt;Disabled Radio Button&lt;/label&gt;
 			</html-code>
 			<css-code>
-			.switch-container {
-				transition: background-color 0.1s;
-				border: 1px solid #999999;
-				border-radius: 5px;
-				width: 50px;
-				height: 25px;
-				cursor: pointer;
-				overflow: hidden;
-			}
+	.radio-btn {
+		display: inline-block;
+		border: 1px solid #777777;
+		border-radius: 12.5px;
+		height: 25px;
+		width: 25px;
+		cursor: pointer;
+	}
 
-			.switch-container.off{
-				background-color: #bbbbbb;
-			}
+	.radio-btn.on {
+		background-color: #195793;
+	}
 
-			.switch-container.on{
-				background-color: blue;
-			}
+	.radio-btn[disabled] {
+		border: 1px solid #AAAAAA;
+	}
 
-			.switch-text {
-				background-color: inherit;
-				color: white;
-				text-align: center;
-				transition: width 0.1s;
-				font-weight: bold;
-				line-height: 25px;
-				overflow: hidden;
-				float: left;
-				-webkit-touch-callout: none; /* iOS Safari */
-				-webkit-user-select: none;   /* Chrome/Safari/Opera */
-				-khtml-user-select: none;    /* Konqueror */
-				-moz-user-select: none;      /* Firefox */
-				-ms-user-select: none;       /* Internet Explorer/Edge */
-				user-select: none;
-			}
-
-			.switch-text.hidden {
-				width: 0;
-			}
-
-			.switch-text.shown {
-				width: 80%;
-			}
-
-			.slider {
-				background-color: white;
-				border: 1px solid #999999;
-				border-radius: 2px;
-				height: 23px;
-				width: 20%;
-				float: left;
-			}
+	.btn-label {
+		color: #777777;
+	}
 			</css-code>
 		</rc-code-viewer>
 	</rc-shelf>
@@ -347,14 +378,189 @@
 					ng-click="btnThree.toggle()"
 					disabled="true">
 				</div><br>
-				<label class="btn-label">Linked Buttons (with first radio button example)</label>
+				<label class="btn-label">Linked Buttons</label><br>
+				<label class="btn-label">(with first radio button example)</label>
 			</rc-shelf-drawer>
 		</shelf-content>
 		<rc-code-viewer
 			name="buttons">
-			<js-code></js-code>
-			<html-code></html-code>
-			<css-code></css-code>
+			<js-code>
+	angular
+		.module( 'reusableBehaviors' )
+		.factory( 'rbRelayService', rbRelayService );
+
+	function rbRelayService () {
+
+		var s = {
+			register: register,
+			toggle: toggle,
+			groups: {}
+		};
+
+		return s;
+
+		function register ( index, isFirst, isDefault ) {
+			if ( !s.groups[ index ] ) s.groups[ index ] = {
+				id: 0,
+				default: -1,
+				active: -1
+			};
+
+			var id = s.groups[ index ].id++;
+
+			if ( isFirst || isDefault ) s.groups[ index ].active = id;
+			if ( isDefault ) s.groups[ index ].default = id;
+
+			return id;
+		}
+
+		function toggle ( index, id ) {
+			var group = s.groups[ index ];
+
+			group.active = group.active === id ? group.default : id;
+		}
+	}
+
+	angular
+		.module( 'reusableBehaviors' )
+		.directive( 'rbRelay', rbRelay );
+
+	rbRelay.$inject = [ 'rbRelayService' ];
+
+	function rbRelay( rbRelayService ){
+		var s = rbRelayService;
+		return {
+			restrict: 'A',
+			scope: {
+				relayApi: '=',
+				group: '@',
+				first: '=?',
+				default: '=?',
+				disabled: '=?'
+			},
+			link: function( scope, elem, attr ){
+				scope.relayApi = {
+					isActive: isActive,
+					toggle: toggle
+				};
+
+				scope.id = s.register( scope.group, scope.first, scope.default );
+
+				function isActive () {
+					return s.groups[ scope.group ].active === scope.id ? true : false;
+				}
+
+				function toggle () {
+					if ( ! attr.disabled ) s.toggle( scope.group, scope.id );
+				}
+			}
+		}
+	}
+			</js-code>
+			<html-code>
+	&lt;div
+		class="btn"
+		rb-relay
+		relay-api="btnOne"
+		group="three"
+		ng-class="{
+			on: btnOne.isActive()
+		}"
+		ng-click="btnOne.toggle()"&gt;
+	&lt;/div&gt;
+	&lt;div
+		class="btn"
+		rb-relay
+		relay-api="btnTwo"
+		group="three"
+		ng-class="{
+			on: btnTwo.isActive()
+		}"
+		ng-click="btnTwo.toggle()"&gt;
+	&lt;/div&gt;
+	&lt;div
+		class="btn"
+		rb-relay
+		relay-api="btnThree"
+		group="three"
+		ng-class="{
+			on: btnThree.isActive()
+		}"
+		ng-click="btnThree.toggle()"
+		disabled="true"&gt;
+	&lt;/div&gt;&lt;br&gt;
+	&lt;label class="btn-label"&gt;Disabled Button&lt;/label&gt;
+
+	&lt;div
+		class="btn"
+		rb-relay
+		relay-api="btnOne"
+		group="one"
+		ng-class="{
+			on: btnOne.isActive()
+		}"
+		ng-click="btnOne.toggle()"&gt;
+	&lt;/div&gt;
+	&lt;div
+		class="btn"
+		rb-relay
+		relay-api="btnTwo"
+		group="one"
+		ng-class="{
+			on: btnTwo.isActive()
+		}"
+		ng-click="btnTwo.toggle()"&gt;
+	&lt;/div&gt;
+	&lt;div
+		class="btn"
+		rb-relay
+		relay-api="btnThree"
+		group="one"
+		ng-class="{
+			on: btnThree.isActive()
+		}"
+		ng-click="btnThree.toggle()"
+		disabled="true"&gt;
+	&lt;/div&gt;&lt;br&gt;
+	&lt;label class="btn-label"&gt;Linked Buttons&lt;/label&gt;&lt;br&gt;
+	&lt;label class="btn-label"&gt;(with first radio button example)&lt;/label&gt;
+			</html-code>
+			<css-code>
+	.btn {
+		font-size: 1.5em;
+		line-height: 4vh;
+		color: white;
+		margin-left: 1vw;
+		margin-right: 1vw;
+		display: inline-block;
+		border-radius: 5px;
+		background-color: #DDDDDD;
+		height: 4vh;
+		width: 3vw;
+		cursor: pointer;
+	}
+
+	.btn:hover {
+		background-color: #BBBBBB;
+	}
+
+	.btn.on {
+		box-shadow: 4px 4px 4px #AAAAAA;
+	}
+
+	.btn[disabled] {
+		background-color: #EEEEEE;
+		pointer-events: none;
+	}
+
+	.btn-label {
+		color: #777777;
+	}
+
+	.btn-label[disabled] {
+		color: #AAAAAA;
+	}
+			</css-code>
 		</rc-code-viewer>
 	</rc-shelf>
 
@@ -401,8 +607,7 @@
 						left: btnOne.isActive(),
 						center: btnTwo.isActive(),
 						right: btnThree.isActive()
-					}"
-				>
+					}">
 					<span>
  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae felis erat. Vivamus massa velit, ultricies id condimentum quis, egestas in nisi. Integer pellentesque rhoncus augue quis dignissim. Aliquam eu felis metus. Ut vehicula suscipit elit, a laoreet lorem venenatis at. Mauris accumsan, diam eu pulvinar tempus, justo orci cursus odio, ac vestibulum ante turpis in mauris. Pellentesque dui mi, dictum quis vehicula ac, porttitor a massa. Cras vitae imperdiet ligula. In hac habitasse platea dictumst. In egestas auctor risus pharetra efficitur.<br><br>
 
@@ -414,10 +619,173 @@ Nam id diam quis neque dignissim posuere. Phasellus tincidunt magna erat. Maecen
 			</rc-shelf-drawer>
 		</shelf-content>
 		<rc-code-viewer
-			name="buttons">
-			<js-code></js-code>
-			<html-code></html-code>
-			<css-code></css-code>
+			name="layout">
+			<js-code>
+	angular
+		.module( 'reusableBehaviors' )
+		.factory( 'rbRelayService', rbRelayService );
+
+	function rbRelayService () {
+
+		var s = {
+			register: register,
+			toggle: toggle,
+			groups: {}
+		};
+
+		return s;
+
+		function register ( index, isFirst, isDefault ) {
+			if ( !s.groups[ index ] ) s.groups[ index ] = {
+				id: 0,
+				default: -1,
+				active: -1
+			};
+
+			var id = s.groups[ index ].id++;
+
+			if ( isFirst || isDefault ) s.groups[ index ].active = id;
+			if ( isDefault ) s.groups[ index ].default = id;
+
+			return id;
+		}
+
+		function toggle ( index, id ) {
+			var group = s.groups[ index ];
+
+			group.active = group.active === id ? group.default : id;
+		}
+	}
+
+	angular
+		.module( 'reusableBehaviors' )
+		.directive( 'rbRelay', rbRelay );
+
+	rbRelay.$inject = [ 'rbRelayService' ];
+
+	function rbRelay( rbRelayService ){
+		var s = rbRelayService;
+		return {
+			restrict: 'A',
+			scope: {
+				relayApi: '=',
+				group: '@',
+				first: '=?',
+				default: '=?',
+				disabled: '=?'
+			},
+			link: function( scope, elem, attr ){
+				scope.relayApi = {
+					isActive: isActive,
+					toggle: toggle
+				};
+
+				scope.id = s.register( scope.group, scope.first, scope.default );
+
+				function isActive () {
+					return s.groups[ scope.group ].active === scope.id ? true : false;
+				}
+
+				function toggle () {
+					if ( ! attr.disabled ) s.toggle( scope.group, scope.id );
+				}
+			}
+		}
+	}
+			</js-code>
+			<html-code>
+	&lt;div
+		class="btn"
+		rb-relay
+		relay-api="btnOne"
+		group="four"
+		ng-class="{
+			on: btnOne.isActive()
+		}"
+		ng-click="btnOne.toggle()"&gt;
+		&lt;i class="fa fa-align-left"&gt;&lt;/i&gt;
+	&lt;/div&gt;
+	&lt;div
+		class="btn"
+		rb-relay
+		relay-api="btnTwo"
+		group="four"
+		default="true"
+		ng-class="{
+			on: btnTwo.isActive()
+		}"
+		ng-click="btnTwo.toggle()"&gt;
+		&lt;i class="fa fa-align-center"&gt;&lt;/i&gt;
+	&lt;/div&gt;
+	&lt;div
+		class="btn"
+		rb-relay
+		relay-api="btnThree"
+		group="four"
+		ng-class="{
+			on: btnThree.isActive()
+		}"
+		ng-click="btnThree.toggle()"&gt;
+		&lt;i class="fa fa-align-right"&gt;&lt;/i&gt;
+	&lt;/div&gt;
+	&lt;div class="layout-viewer"
+		ng-class="{
+			left: btnOne.isActive(),
+			center: btnTwo.isActive(),
+			right: btnThree.isActive()
+		}"&gt;
+		&lt;span&gt;
+ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae felis erat. Vivamus massa velit, ultricies id condimentum quis, egestas in nisi. Integer pellentesque rhoncus augue quis dignissim. Aliquam eu felis metus. Ut vehicula suscipit elit, a laoreet lorem venenatis at. Mauris accumsan, diam eu pulvinar tempus, justo orci cursus odio, ac vestibulum ante turpis in mauris. Pellentesque dui mi, dictum quis vehicula ac, porttitor a massa. Cras vitae imperdiet ligula. In hac habitasse platea dictumst. In egestas auctor risus pharetra efficitur.&lt;br&gt;&lt;br&gt;
+
+Aliquam mi elit, malesuada sed libero et, laoreet pellentesque nibh. Vivamus ultricies nec turpis vel elementum. Nulla cursus malesuada massa sed consequat. Nam dapibus, sem mattis malesuada fermentum, velit arcu accumsan felis, eget dignissim arcu quam eget enim. Nam et odio lectus. Curabitur varius aliquam suscipit. Suspendisse euismod, est non tristique maximus, diam sem volutpat felis, a accumsan lorem nisl eget mi. Vivamus malesuada leo lorem, id vulputate arcu hendrerit vitae. Nulla a egestas nibh.&lt;br&gt;&lt;br&gt;
+
+Nam id diam quis neque dignissim posuere. Phasellus tincidunt magna erat. Maecenas posuere tincidunt massa, quis pellentesque nunc aliquet facilisis. Proin fringilla vel massa eu faucibus. Cras auctor fermentum metus quis vehicula. Curabitur semper nulla sed aliquam elementum. Sed felis tortor, dapibus eget sapien sed, eleifend congue leo. Aenean facilisis gravida imperdiet. Curabitur pellentesque tellus sed lectus ornare, ac tempor felis pulvinar. Vestibulum tincidunt nulla nunc, vitae laoreet quam ultricies nec. Nunc eget lacinia arcu, sed auctor ex. Suspendisse iaculis, nisl quis interdum fermentum, sapien eros pharetra justo, quis facilisis lectus dui sit amet metus. Nunc faucibus, neque ut fringilla aliquet, ex dolor porttitor quam, sit amet scelerisque odio arcu ut justo.
+		&lt;/span&gt;
+	&lt;/div&gt;
+			</html-code>
+			<css-code>
+	.btn {
+		font-size: 1.5em;
+		line-height: 4vh;
+		color: white;
+		margin-left: 1vw;
+		margin-right: 1vw;
+		display: inline-block;
+		border-radius: 5px;
+		background-color: #DDDDDD;
+		height: 4vh;
+		width: 3vw;
+		cursor: pointer;
+	}
+
+	.btn:hover {
+		background-color: #BBBBBB;
+	}
+
+	.btn.on {
+		box-shadow: 4px 4px 4px #AAAAAA;
+	}
+
+	.layout-viewer {
+		margin-top: 1vh;
+		border: 1px solid #CCCCCC;
+		width: 100%;
+		padding: 20px 10px;
+		background-color: white;
+	}
+
+	.layout-viewer.left {
+		text-align: left;
+	}
+
+	.layout-viewer.center {
+		text-align: center;
+	}
+
+	.layout-viewer.right {
+		text-align: right;
+	}
+			</css-code>
 		</rc-code-viewer>
 	</rc-shelf>
 </rc-demo-card>
