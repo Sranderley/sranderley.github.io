@@ -144,15 +144,16 @@ pre {
 
 .content-position {
 	margin-top: 3vh;
-	margin-right: 20vw;
-	transition: margin-left 0.1s;
+	transition: margin-left 0.1s, width 0.1s;
 }
 
 .content-position.navCollapsed {
+	width: 68vw;
 	margin-left: 12vw;
 }
 
 .content-position.navExpanded {
+	width: 47vw;
 	margin-left: 33vw;
 }
 
