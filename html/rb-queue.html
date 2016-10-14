@@ -6,41 +6,42 @@
 	<rc-shelf name="pagination">
 		<shelf-title>Pagination</shelf-title>
 		<shelf-content>
-			<rc-shelf-drawer>
-				<div
-					class="btn"
-					rb-queue
-					queue-api="btnOne"
-					group="one"
-					position="0"
-					ng-class="{
-						on: btnOne.isActive()
-					}"
-					ng-click="btnOne.setActive()">
-					<i class="fa fa-align-left"></i>
+			<rc-shelf-drawer rb-queue queue-api="q" count="3">
+				<div class="btn" ng-click="q.moveFirst()">
+					<i class="fa fa-angle-double-left"></i>
+				</div>
+				<div class="btn" ng-click="q.movePrev()">
+					<i class="fa fa-angle-left"></i>
 				</div>
 				<div
 					class="btn"
-					rb-queue
-					queue-api="btnTwo"
-					group="one"
-					position="1"
+					ng-click="q.setActive(1)"
 					ng-class="{
-						on: btnTwo.isActive()
-					}"
-					ng-click="btnTwo.setActive()">
-					<i class="fa fa-align-center"></i>
+						on: q.isActive(1)
+					}">
+					<i>1</i>
 				</div>
 				<div
 					class="btn"
-					rb-relay
-					relay-api="btnThree"
-					group="four"
+					ng-click="q.setActive(2)"
 					ng-class="{
-						on: btnThree.isActive()
-					}"
-					ng-click="btnThree.toggle()">
-					<i class="fa fa-align-right"></i>
+						on: q.isActive(2)
+					}">
+					<i>2</i>
+				</div>
+				<div
+					class="btn"
+					ng-click="q.setActive(3)"
+					ng-class="{
+						on: q.isActive(3)
+					}">
+					<i>3</i>
+				</div>
+				<div class="btn" ng-click="q.moveNext()">
+					<i class="fa fa-angle-right"></i>
+				</div>
+				<div class="btn" ng-click="q.moveLast()">
+					<i class="fa fa-angle-double-right"></i>
 				</div>
 			</rc-shelf-drawer>
 		</shelf-content>

@@ -117,15 +117,14 @@ function rbQueueService () {
 	return s;
 
 	function register ( index, id ) {
-		if( !groups[index] ) groups[index] = 0;
+		if( !groups[ index ] ) groups[ index ] = 0;
 
-		groups[index] = id > groups[index] ? id : groups[index];
+		groups[ index ] = id > groups[ index ] ? id : groups[ index ];
 
-		s.active[index] = 0;
+		s.active[ index ] = 0;
 	}
 
 	function setActive ( index, id ) {
-		console.log(groups[index]);
 		s.active[ index ] = id;
 	}
 
@@ -148,54 +147,58 @@ function rbQueueService () {
 
 angular
 	.module( 'reusableBehaviors' )
-	.directive('rbQueue', rbQueue);
+	.directive( 'rbQueue', rbQueue );
 
-rbQueue.$inject = [ 'rbQueueService' ];
-
-function rbQueue ( rbQueueService ) {
+function rbQueue () {
 	return {
 		restrict: 'A',
 		scope: {
 			queueApi: '=',
-			group: '@',
-			position: '='
+			count: '='
 		},
 		link: function ( scope, elem, attr ) {
-			var s = rbQueueService;
-
+			var active = 0;
 			scope.queueApi = {
 				isActive: isActive,
 				setActive: setActive,
+				isFirst: isFirst,
+				isLast: isLast,
 				moveFirst: moveFirst,
 				movePrev: movePrev,
 				moveNext: moveNext,
 				moveLast: moveLast
 			};
 
-			s.register( attr.group, attr.position );
-
-			function isActive () {
-				return s.active[ attr.group ] == attr.position ? true : false;
+			function isActive ( index ) {
+				return active === index;
 			}
 
-			function setActive () {
-				s.setActive( attr.group, attr.position );
+			function setActive ( index ) {
+				active = index;
 			}
 
-			function moveFirst ( index ) {
-
+			function isFirst () {
+				return active === 1;
 			}
 
-			function movePrev ( index ) {
-
+			function isLast () {
+				return active === scope.count;
 			}
 
-			function moveNext ( index ) {
-
+			function moveFirst () {
+				active = 1;
 			}
 
-			function moveLast ( index ) {
+			function movePrev () {
+				active = active === 1 ? 1 : active - 1;
+			}
 
+			function moveNext () {
+				active = active === scope.count ? scope.count : active + 1 ;
+			}
+
+			function moveLast () {
+				active = scope.count;
 			}
 		}
 	}
