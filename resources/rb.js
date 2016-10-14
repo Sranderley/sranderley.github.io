@@ -99,54 +99,6 @@ function rbRelay( rbRelayService ){
 
 angular
 	.module( 'reusableBehaviors' )
-	.factory('rbQueueService', rbQueueService);
-
-function rbQueueService () {
-	var groups = {};
-
-	var s = {
-		register: register,
-		setActive: setActive,
-		moveFirst: moveFirst,
-		movePrev: movePrev,
-		moveNext: moveNext,
-		moveLast: moveLast,
-		active: {}
-	};
-
-	return s;
-
-	function register ( index, id ) {
-		if( !groups[ index ] ) groups[ index ] = 0;
-
-		groups[ index ] = id > groups[ index ] ? id : groups[ index ];
-
-		s.active[ index ] = 0;
-	}
-
-	function setActive ( index, id ) {
-		s.active[ index ] = id;
-	}
-
-	function moveFirst ( index ) {
-
-	}
-
-	function movePrev ( index ) {
-
-	}
-
-	function moveNext ( index ) {
-
-	}
-
-	function moveLast ( index ) {
-
-	}
-}
-
-angular
-	.module( 'reusableBehaviors' )
 	.directive( 'rbQueue', rbQueue );
 
 function rbQueue () {
