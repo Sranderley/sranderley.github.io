@@ -6,7 +6,7 @@
 	<rc-shelf name="pagination">
 		<shelf-title>Pagination</shelf-title>
 		<shelf-content>
-			<rc-shelf-drawer rb-queue queue-api="q" count="3">
+			<rc-shelf-drawer rb-queue queue-api="q" count="3" proximity="1">
 				<div class="btn" ng-click="q.moveFirst()">
 					<i class="fa fa-angle-double-left"></i>
 				</div>
@@ -34,7 +34,8 @@
 					ng-click="q.setActive(3)"
 					ng-class="{
 						on: q.isActive(3)
-					}">
+					}"
+					ng-show="q.isProximal(3)">
 					<i>3</i>
 				</div>
 				<div class="btn" ng-click="q.moveNext()">

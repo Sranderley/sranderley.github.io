@@ -106,7 +106,8 @@ function rbQueue () {
 		restrict: 'A',
 		scope: {
 			queueApi: '=',
-			count: '='
+			count: '=',
+			proximity: '='
 		},
 		link: function ( scope, elem, attr ) {
 			var active = 0;
@@ -115,6 +116,7 @@ function rbQueue () {
 				setActive: setActive,
 				isFirst: isFirst,
 				isLast: isLast,
+				isProximal: isProximal,
 				moveFirst: moveFirst,
 				movePrev: movePrev,
 				moveNext: moveNext,
@@ -135,6 +137,10 @@ function rbQueue () {
 
 			function isLast () {
 				return active === scope.count;
+			}
+
+			function isProximal ( index ) {
+				return Math.abs( active - index ) <= scope.proximity;
 			}
 
 			function moveFirst () {
