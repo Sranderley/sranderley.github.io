@@ -107,16 +107,19 @@ function rbQueue () {
 		scope: {
 			queueApi: '=',
 			count: '=',
-			proximity: '='
+			proximity: '=?',
+			internalEllipsis: '=?'
 		},
 		link: function ( scope, elem, attr ) {
-			var active = 0;
+			var active = 1;
 			scope.queueApi = {
 				isActive: isActive,
 				setActive: setActive,
 				isFirst: isFirst,
 				isLast: isLast,
 				isProximal: isProximal,
+				leftEllipsis: leftEllipsis,
+				rightEllipsis: rightEllipsis,
 				moveFirst: moveFirst,
 				movePrev: movePrev,
 				moveNext: moveNext,
@@ -140,7 +143,23 @@ function rbQueue () {
 			}
 
 			function isProximal ( index ) {
-				return Math.abs( active - index ) <= scope.proximity;
+				if ( active <= scope.proximity ) {
+					return index <= 1 + 2 * scope.proximity;
+				} else if ( active > scope.count - scope.proximity ) {
+					return index >= scope.count - 2 * scope.proximity;
+				} else {
+					return Math.abs( active - index ) <= scope.proximity;
+				}
+			}
+
+			function leftEllipsis () {
+				var leftThreshold = scope.internalEllipsis ? scope.proximity + 2 : scope.proximity + 1;
+				return active > leftThreshold;
+			}
+
+			function rightEllipsis () {
+				var rightThreshold = scope.internalEllipsis ? scope.count - scope.proximity - 1 : scope.count - scope.proximity;
+				return active < rightThreshold;
 			}
 
 			function moveFirst () {
