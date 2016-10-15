@@ -508,3 +508,26 @@ a > .link-icon {
 .btn.on {
 	box-shadow: 4px 4px 4px #888888;
 }
+
+.page-btn {
+	font-size: 1.5em;
+	line-height: 4vh;
+	color: #333333;
+	margin-left: 0.25vw;
+	margin-right: 0.25vw;
+	display: inline-block;
+	border-radius: 5px;
+	background-color: #DDDDDD;
+	height: 4vh;
+	width: 2vw;
+	cursor: pointer;
+}
+
+.page-btn:hover {
+	background-color: #BBBBBB;
+}
+
+.page-btn.on {
+	background-color: #8492A0;
+	color: #EEEEEE;
+}
