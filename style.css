@@ -531,3 +531,29 @@ a > .link-icon {
 	background-color: #8492A0;
 	color: #EEEEEE;
 }
+
+.page-btn.off {
+	visibility: hidden;
+}
+
+.slideshow-viewer {
+	display: inline-block;
+	width: 80%;
+	position: relative;
+}
+
+.slide > img {
+	max-width: 80%;
+}
+
+.slide {
+	position: relative;
+	overflow: hidden;
+	transition: width 0.1s;
+	width: 0;
+}
+
+.slide.active {
+	display: inline-block;
+	width: 100%;
+}

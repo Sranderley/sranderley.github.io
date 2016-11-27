@@ -111,7 +111,9 @@ function rbQueue () {
 			internalEllipsis: '=?'
 		},
 		link: function ( scope, elem, attr ) {
-			var active = 1;
+
+			var active = 1
+
 			scope.queueApi = {
 				isActive: isActive,
 				setActive: setActive,
