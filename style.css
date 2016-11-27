@@ -523,6 +523,12 @@ a > .link-icon {
 	cursor: pointer;
 }
 
+.page-btn.disabled {
+	background-color: #EEEEEE;
+	color: #555555;
+	pointer-events: none;
+}
+
 .page-btn:hover {
 	background-color: #BBBBBB;
 }
